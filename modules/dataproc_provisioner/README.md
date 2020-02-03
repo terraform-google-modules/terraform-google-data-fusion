@@ -20,9 +20,13 @@ module "custom_dataproc" {
   source  = "terraform-google-modules/data-fusion/google//modules/dataproc_provisioner"
   version = "~> 0.1"
 
-  name = "custom-dataproc"
-  label = "Custom Dataproc"
+  name   = "custom-dataproc"
+  label  = "Custom Dataproc Profile"
 
+  network         = "example-network"
+  subnet          = "example-subnetwork"
+  service_account = "example-sa"
+  gcs_bucket      = "example-bucket"
 }
 ```
 
