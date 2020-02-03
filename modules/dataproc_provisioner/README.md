@@ -34,18 +34,20 @@ Functional examples are included in the
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| account\_key | Service account key of the dataproc service account | string | `""` | no |
+| account\_key | Service account key to use for authentication | string | `""` | no |
+| encryption\_key\_name | Customer supplied encryption key used by the cluster | string | `""` | no |
 | gcs\_bucket | Bucket to write cluster job and data data | string | `""` | no |
 | image\_version | Dataproc image version to use for the cluster | string | `""` | no |
 | label | Label of the profile | string | n/a | yes |
+| master | Config of the cluster master | object | `<map>` | no |
 | name | Name of the profile | string | n/a | yes |
 | network | Network to use for the cluster | string | `"default"` | no |
 | network\_host\_project\_id | Project ID of the network | string | `""` | no |
 | project | ID of the project hosting the cluster | string | `"auto-detect"` | no |
-| project | ID of the project hosting the cluster | string | `"auto-detect"` | no |
 | region | Region of the dataproc cluster | string | `"auto-detect"` | no |
 | service\_account | Service account to run the cluster as | string | `""` | no |
 | subnet | Subnet to use for the cluster | string | `""` | no |
+| worker | Config of the cluster worker | object | `<map>` | no |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
