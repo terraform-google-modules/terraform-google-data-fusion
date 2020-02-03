@@ -4,9 +4,6 @@ This module can be used to deploy a custom compute profile for a GCP dataproc
 provisioner. The default dataproc provisioner uses things like the default
 network and default compute service account which is often not desirable.
 
-This module requires the
-[Terraform CDAP provider](https://googlecloudplatform.github.io/terraform-provider-cdap/).
-
 ## Usage
 
 Basic usage of this module is as follows:
@@ -54,7 +51,8 @@ Functional examples are included in the
 
 ## Requirements
 
-These sections describe requirements for using this module.
+This module requires the
+[Terraform CDAP provider](https://googlecloudplatform.github.io/terraform-provider-cdap/).
 
 ### Software
 
@@ -68,7 +66,7 @@ The following dependencies must be available:
 A service account with the following roles must be used to provision
 the resources of this module:
 
-- Storage Admin: `roles/storage.admin`
+- Data Fusion Admin: `roles/datafusion.admin`
 
 The [Project Factory module][project-factory-module] and the
 [IAM module][iam-module] may be used in combination to provision a
@@ -79,7 +77,7 @@ service account with the necessary roles applied.
 A project with the following APIs enabled must be used to host the
 resources of this module:
 
-- Google Cloud Storage JSON API: `storage-api.googleapis.com`
+- Google Cloud Data Fusion API: `datafusion.googleapis.com`
 
 The [Project Factory module][project-factory-module] can be used to
 provision a project with the necessary APIs enabled.
