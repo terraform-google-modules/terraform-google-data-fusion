@@ -89,13 +89,13 @@ variable "master" {
   type = object({
     num_nodes = number
     num_cpus  = number
-    memory_mb = number
+    memory_gb = number
     disk_gb   = number
   })
   default = {
     num_nodes = 1
     num_cpus  = 8
-    memory_mb = 52000
+    memory_gb = 52
     disk_gb   = 1000
   }
 }
@@ -105,13 +105,13 @@ variable "worker" {
   type = object({
     num_nodes = number
     num_cpus  = number
-    memory_mb = number
+    memory_gb = number
     disk_gb   = number
   })
   default = {
     num_nodes = 5
     num_cpus  = 1
-    memory_mb = 52000
+    memory_gb = 52
     disk_gb   = 1000
   }
 }

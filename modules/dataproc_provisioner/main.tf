@@ -76,42 +76,42 @@ resource "cdap_profile" "dataproc_provisioner" {
     }
     properties {
       name        = "masterNumNodes"
-      value       = tostring(var.master.num_nodes) # 1
+      value       = tostring(var.master.num_nodes)
       is_editable = true
     }
     properties {
       name        = "masterCPUs"
-      value       = tostring(var.master.num_cpus) # "2"
+      value       = tostring(var.master.num_cpus)
       is_editable = true
     }
     properties {
       name        = "masterMemoryMB"
-      value       = tostring(var.master.memory_mb) # "4096"
+      value       = tostring(var.master.memory_gb * 1024)
       is_editable = true
     }
     properties {
       name        = "masterDiskGB"
-      value       = tostring(var.master.disk_gb) # "1000"
+      value       = tostring(var.master.disk_gb)
       is_editable = true
     }
     properties {
       name        = "workerNumNodes"
-      value       = tostring(var.worker.num_nodes) # "4"
+      value       = tostring(var.worker.num_nodes)
       is_editable = true
     }
     properties {
       name        = "workerCPUs"
-      value       = tostring(var.worker.num_cpus) # "2"
+      value       = tostring(var.worker.num_cpus)
       is_editable = true
     }
     properties {
       name        = "workerMemoryMB"
-      value       = tostring(var.worker.memory_mb) # "8192"
+      value       = tostring(var.worker.memory_gb * 1024)
       is_editable = true
     }
     properties {
       name        = "workerDiskGB"
-      value       = tostring(var.worker.disk_gb) # "1000"
+      value       = tostring(var.worker.disk_gb)
       is_editable = true
     }
     properties {
