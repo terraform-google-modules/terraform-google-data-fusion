@@ -1,8 +1,9 @@
 # Dataproc Provisioner
 
 This module can be used to deploy a custom compute profile for a GCP dataproc
-provisioner. The default dataproc provisioner uses things like the default
-network and default compute service account which is often not desirable.
+provisioner. The default dataproc provisioner has unconfigurable settings such
+as using the default network and default compute service account which are often
+not desired.
 
 ## Usage
 
