@@ -62,12 +62,12 @@ resource "cdap_profile" "dataproc_provisioner" {
     properties {
       name        = "gcsBucket"
       value       = var.gcs_bucket
-      is_editable = false
+      is_editable = true
     }
     properties {
       name        = "encryptionKeyName"
       value       = var.encryption_key_name
-      is_editable = false
+      is_editable = true
     }
     properties {
       name        = "accountKey"
@@ -117,17 +117,17 @@ resource "cdap_profile" "dataproc_provisioner" {
     properties {
       name        = "preferExternalIp"
       value       = "false"
-      is_editable = false
+      is_editable = true
     }
     properties {
       name        = "stackdriverLoggingEnabled"
       value       = "true"
-      is_editable = false
+      is_editable = true
     }
     properties {
       name        = "stackdriverMonitoringEnabled"
       value       = "true"
-      is_editable = false
+      is_editable = true
     }
     properties {
       name        = "pollCreateDelay"
