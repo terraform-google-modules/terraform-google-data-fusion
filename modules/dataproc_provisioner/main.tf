@@ -14,6 +14,14 @@
  * limitations under the License.
  */
 
+# TODO(jferriero) remove this 
+data "google_client_config" "current" {}
+
+provider "cdap" {
+  host  = "https://test0-jferriero-dev-dot-usc1.datafusion.googleusercontent.com/api/"
+  token = data.google_client_config.current.access_token
+}
+
 resource "cdap_profile" "dataproc_provisioner" {
   name  = var.name
   label = var.label
@@ -147,6 +155,13 @@ resource "cdap_profile" "dataproc_provisioner" {
     properties {
       name        = "pollInterval"
       value       = "2"
+      is_editable = true
+    }
+    properties {
+      for_each = var.cluster_properties
+
+      name        = each.key
+      value       = each.value
       is_editable = true
     }
   }
