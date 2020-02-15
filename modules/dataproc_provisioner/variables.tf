@@ -84,10 +84,10 @@ variable "encryption_key_name" {
   default     = ""
 }
 
-variable "cluster_properties"{
-  description = "Dataproc Cluster Properties https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/cluster-properties"
-  type        = map(string)
-  default     = {}
+variable "extra_properties"{
+  description = "Extra properties for the CDAP Profile payload. This can include Dataproc Cluster Properties https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/cluster-properties"
+  type = map(string)
+  default = {}
 }
 
 
