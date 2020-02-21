@@ -15,8 +15,10 @@
  */
 
 resource "cdap_profile" "dataproc_provisioner" {
-  name  = var.name
-  label = var.label
+  name      = var.name
+  label     = var.label
+  namespace = var.namespace
+
   profile_provisioner {
     name = "gcp-dataproc"
     properties {
