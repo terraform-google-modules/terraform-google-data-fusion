@@ -14,13 +14,7 @@
  * limitations under the License.
  */
 
-provider "google" {
-  version = "~> 2.0"
-}
-
-module "data_fusion" {
-  source = "../.."
-
-  project_id  = var.project_id
-  bucket_name = var.bucket_name
+variable "project_id" {
+  description = "The ID of the project in which to provision resources."
+  type        = string
 }

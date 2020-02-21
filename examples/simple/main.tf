@@ -14,7 +14,10 @@
  * limitations under the License.
  */
 
-output "bucket_name" {
-  description = "The name of the bucket."
-  value       = module.data_fusion.bucket_name
+module "data_fusion" {
+  source = "../../"
+
+  name    = "example-instance"
+  project = var.project_id
+  region  = "us-central1"
 }

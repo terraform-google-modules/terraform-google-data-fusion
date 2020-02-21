@@ -14,10 +14,50 @@
  * limitations under the License.
  */
 
-variable "project_id" {
-  description = "The project ID to deploy to"
+variable "name" {
+  description = "Name of the instance."
+  type        = string
 }
 
-variable "bucket_name" {
-  description = "The name of the bucket to create"
+variable "project" {
+  description = "The project ID to deploy to."
+  type        = string
+}
+
+variable "description" {
+  description = "An optional description of the instance."
+  type        = string
+  default     = null
+}
+
+variable "region" {
+  description = "The region of the instance."
+  type        = string
+}
+
+variable "type" {
+  description = "Represents the type of the instance (BASIC or ENTERPRISE)"
+  type        = string
+  default     = "ENTERPRISE"
+}
+
+variable "labels" {
+  description = "The resource labels for instance to use to annotate any related underlying resources, such as Compute Engine VMs."
+  type        = map(string)
+  default     = {}
+}
+
+variable "options" {
+  description = "Map of additional options used to configure the behavior of Data Fusion instance."
+  type        = map(string)
+  default     = {}
+}
+
+variable "network_config" {
+  description = "Network configuration options. These are required when a private Data Fusion instance is to be created."
+  type = object({
+    network       = string
+    ip_allocation = string
+  })
+  default = null
 }

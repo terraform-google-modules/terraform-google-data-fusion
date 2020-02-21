@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 Google LLC
+ * Copyright 2020 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,24 @@
  * limitations under the License.
  */
 
-resource "google_storage_bucket" "main" {
-  project = var.project_id
-  name    = var.bucket_name
+resource "google_data_fusion_instance" "instance" {
+  provider                      = google-beta
+  name                          = var.name
+  project                       = var.project
+  description                   = var.description
+  region                        = var.region
+  type                          = var.type
+  enable_stackdriver_logging    = true
+  enable_stackdriver_monitoring = true
+  labels                        = var.labels
+  options                       = var.options
+  private_instance              = var.network_config != null
+
+  dynamic "network_config" {
+    for_each = var.network_config == null ? [] : [var.network_config]
+    content {
+      network       = var.network_config.network
+      ip_allocation = var.network_config.ip_allocation
+    }
+  }
 }
