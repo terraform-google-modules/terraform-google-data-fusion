@@ -29,7 +29,7 @@ Functional examples are included in the
 | description | An optional description of the instance. | string | `"null"` | no |
 | labels | The resource labels for instance to use to annotate any related underlying resources, such as Compute Engine VMs. | map(string) | `<map>` | no |
 | name | Name of the instance. | string | n/a | yes |
-| network\_config | Network configuration options. These are required when a private Data Fusion instance is to be created. | object | `"null"` | no |
+| network\_config | Network configuration options as defined in https://www.terraform.io/docs/providers/google/r/data_fusion_instance.html#network_config. Setting this implies a private instance. | object | `"null"` | no |
 | options | Map of additional options used to configure the behavior of Data Fusion instance. | map(string) | `<map>` | no |
 | project | The project ID to deploy to. | string | n/a | yes |
 | region | The region of the instance. | string | n/a | yes |

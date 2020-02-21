@@ -14,24 +14,15 @@
  * limitations under the License.
  */
 
-resource "google_data_fusion_instance" "instance" {
-  provider                      = google-beta
-  name                          = var.name
-  project                       = var.project
-  description                   = var.description
-  region                        = var.region
-  type                          = var.type
-  enable_stackdriver_logging    = true
-  enable_stackdriver_monitoring = true
-  labels                        = var.labels
-  options                       = var.options
-  private_instance              = var.network_config != null
+module "instance" {
+  source = "./modules/instance"
 
-  dynamic "network_config" {
-    for_each = var.network_config == null ? [] : [var.network_config]
-    content {
-      network       = var.network_config.network
-      ip_allocation = var.network_config.ip_allocation
-    }
-  }
+  name           = var.name
+  project        = var.project
+  description    = var.description
+  region         = var.region
+  type           = var.type
+  labels         = var.labels
+  options        = var.options
+  network_config = var.network_config
 }
