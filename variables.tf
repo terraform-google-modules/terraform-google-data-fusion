@@ -54,7 +54,7 @@ variable "options" {
 }
 
 variable "network_config" {
-  description = "Network configuration options. These are required when a private Data Fusion instance is to be created."
+  description = "Network configuration options as defined in https://www.terraform.io/docs/providers/google/r/data_fusion_instance.html#network_config. Setting this implies a private instance."
   type = object({
     network       = string
     ip_allocation = string

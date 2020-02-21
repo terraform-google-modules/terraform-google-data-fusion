@@ -15,8 +15,10 @@
  */
 
 resource "cdap_profile" "dataproc_provisioner" {
-  name  = var.name
-  label = var.label
+  name      = var.name
+  label     = var.label
+  namespace = var.namespace
+
   profile_provisioner {
     name = "gcp-dataproc"
     properties {
@@ -148,6 +150,16 @@ resource "cdap_profile" "dataproc_provisioner" {
       name        = "pollInterval"
       value       = "2"
       is_editable = true
+    }
+
+    dynamic "properties" {
+      for_each = var.extra_properties
+
+      content {
+        name        = properties.key
+        value       = properties.value
+        is_editable = true
+      }
     }
   }
 }

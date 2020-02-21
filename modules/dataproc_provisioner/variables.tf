@@ -24,6 +24,12 @@ variable "label" {
   type        = string
 }
 
+variable "namespace" {
+  description = "Namespace to deploy profile in"
+  type        = string
+  default     = "default"
+}
+
 variable "project" {
   description = "ID of the project hosting the Dataproc cluster"
   type        = string
@@ -83,6 +89,13 @@ variable "encryption_key_name" {
   type        = string
   default     = ""
 }
+
+variable "extra_properties" {
+  description = "Extra properties for the CDAP Profile payload. This can include Dataproc Cluster Properties https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/cluster-properties"
+  type        = map(string)
+  default     = {}
+}
+
 
 variable "master" {
   description = "Config of the Dataproc cluster master"
