@@ -151,5 +151,15 @@ resource "cdap_profile" "dataproc_provisioner" {
       value       = "2"
       is_editable = true
     }
+
+    dynamic "properties" {
+      for_each = var.extra_properties
+
+      content {
+        name        = properties.key
+        value       = properties.value
+        is_editable = true
+      }
+    }
   }
 }
