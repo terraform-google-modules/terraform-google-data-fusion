@@ -1,6 +1,6 @@
 # terraform-google-data-fusion
 
-This module handle opinionated Google Cloud Platform data fusion instances.
+This module handle opinionated Google Cloud Platform Data Fusion instances.
 
 ## Usage
 
