@@ -24,6 +24,12 @@ variable "label" {
   type        = string
 }
 
+variable "namespace" {
+  description = "Namespace to deploy profile in"
+  type        = string
+  default     = "default"
+}
+
 variable "project" {
   description = "ID of the project hosting the Dataproc cluster"
   type        = string
