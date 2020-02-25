@@ -26,10 +26,12 @@ Functional examples are included in the
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
+| custom\_profile\_name | name for a custom Dataproc Provisioner Compute Profile. | string | n/a | yes |
+| dataproc\_subnet | Name for subnet to create and configure for Dataproc clusters controlled by private Data Fusion instance. | string | `"dataproc-subnet"` | no |
 | description | An optional description of the instance. | string | `"null"` | no |
 | labels | The resource labels for instance to use to annotate any related underlying resources, such as Compute Engine VMs. | map(string) | `<map>` | no |
 | name | Name of the instance. | string | n/a | yes |
-| network\_config | Network configuration options as defined in https://www.terraform.io/docs/providers/google/r/data_fusion_instance.html#network_config. Setting this implies a private instance. | object | `"null"` | no |
+| network | Name for VPC to create and configure for use with private Data Fusion instance. | string | n/a | yes |
 | options | Map of additional options used to configure the behavior of Data Fusion instance. | map(string) | `<map>` | no |
 | project | The project ID to deploy to. | string | n/a | yes |
 | region | The region of the instance. | string | n/a | yes |
