@@ -47,6 +47,7 @@ Functional examples are included in the
 | label | CDAP Label of the profile | string | n/a | yes |
 | master | Config of the Dataproc cluster master | object | `<map>` | no |
 | name | Name of the profile | string | n/a | yes |
+| namespace | Namespace to deploy profile in | string | `"default"` | no |
 | network | Network to use for the Dataproc cluster | string | `"default"` | no |
 | network\_host\_project\_id | Project ID of the network | string | `""` | no |
 | project | ID of the project hosting the Dataproc cluster | string | `"auto-detect"` | no |
