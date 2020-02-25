@@ -1,10 +1,6 @@
 # terraform-google-data-fusion
 
-This module was generated from [terraform-google-module-template](https://github.com/terraform-google-modules/terraform-google-module-template/), which by default generates a module that simply creates a GCS bucket. As the module develops, this README should be updated.
-
-The resources/services/activations/deletions that this module will create/trigger are:
-
-- Create a GCS bucket with the provided name
+This module handle opinionated Google Cloud Platform Data Fusion instances.
 
 ## Usage
 
@@ -15,8 +11,10 @@ module "data_fusion" {
   source  = "terraform-google-modules/data-fusion/google"
   version = "~> 0.1"
 
-  project_id  = "<PROJECT ID>"
-  bucket_name = "gcs-test-bucket"
+  name    = "example-instance"
+  project = "example-project"
+  region  = "us-central1"
+}
 }
 ```
 
@@ -28,14 +26,21 @@ Functional examples are included in the
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| bucket\_name | The name of the bucket to create | string | n/a | yes |
-| project\_id | The project ID to deploy to | string | n/a | yes |
+| description | An optional description of the instance. | string | `"null"` | no |
+| labels | The resource labels for instance to use to annotate any related underlying resources, such as Compute Engine VMs. | map(string) | `<map>` | no |
+| name | Name of the instance. | string | n/a | yes |
+| network\_config | Network configuration options as defined in https://www.terraform.io/docs/providers/google/r/data_fusion_instance.html#network_config. Setting this implies a private instance. | object | `"null"` | no |
+| options | Map of additional options used to configure the behavior of Data Fusion instance. | map(string) | `<map>` | no |
+| project | The project ID to deploy to. | string | n/a | yes |
+| region | The region of the instance. | string | n/a | yes |
+| type | Represents the type of the instance (BASIC or ENTERPRISE) | string | `"ENTERPRISE"` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| bucket\_name |  |
+| instance | The created CDF instance |
+| tenant\_project | The Google managed tenant project ID in which the instance will run its jobs |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
@@ -55,7 +60,7 @@ The following dependencies must be available:
 A service account with the following roles must be used to provision
 the resources of this module:
 
-- Storage Admin: `roles/storage.admin`
+- Data Fusion Admin: `roles/datafusion.admin`
 
 The [Project Factory module][project-factory-module] and the
 [IAM module][iam-module] may be used in combination to provision a
@@ -66,7 +71,7 @@ service account with the necessary roles applied.
 A project with the following APIs enabled must be used to host the
 resources of this module:
 
-- Google Cloud Storage JSON API: `storage-api.googleapis.com`
+- Google Cloud Data Fusion API: `datafusion.googleapis.com`
 
 The [Project Factory module][project-factory-module] can be used to
 provision a project with the necessary APIs enabled.
