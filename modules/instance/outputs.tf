@@ -14,13 +14,16 @@
  * limitations under the License.
  */
 
-provider "google" {
-  version = "~> 2.0"
+output "instance" {
+  value       = google_data_fusion_instance.instance
+  description = "The created CDF instance"
 }
 
-module "data_fusion" {
-  source = "../.."
+locals {
+  tenant_project_re = "cloud-datafusion-management-sa@([\\w-]+).iam.gserviceaccount.com"
+}
 
-  project_id  = var.project_id
-  bucket_name = var.bucket_name
+output "tenant_project" {
+  value       = regex(local.tenant_project_re, google_data_fusion_instance.instance.service_account)[0]
+  description = "The Google managed tenant project ID in which the instance will run its jobs"
 }

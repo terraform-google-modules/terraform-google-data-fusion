@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 Google LLC
+ * Copyright 2020 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,15 @@
  * limitations under the License.
  */
 
-resource "google_storage_bucket" "main" {
-  project = var.project_id
-  name    = var.bucket_name
+module "instance" {
+  source = "./modules/instance"
+
+  name           = var.name
+  project        = var.project
+  description    = var.description
+  region         = var.region
+  type           = var.type
+  labels         = var.labels
+  options        = var.options
+  network_config = var.network_config
 }
