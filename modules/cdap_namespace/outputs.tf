@@ -15,6 +15,6 @@
  */
 
 output "name" {
-  value       = cdap_namespace.name
+  value       = cdap_namespace.parent.name
   description = "The created CDAP namespace"
 }

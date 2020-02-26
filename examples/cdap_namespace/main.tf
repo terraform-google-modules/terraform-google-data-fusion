@@ -29,7 +29,7 @@ provider "cdap" {
 module "staging" {
   source = "../../modules/cdap_namespace"
 
-  name  = var.name
+  name = var.name
   preferences = {
     FOO = "BAR"
   }

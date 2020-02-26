@@ -19,7 +19,7 @@ resource "cdap_namespace" "parent" {
   name = var.name
 }
 
-resource "cdap_namespace_preferences" {
-  namespace = cdap_namespace.parent.name
+resource "cdap_namespace_preferences" "parent_preferences" {
+  namespace   = cdap_namespace.parent.name
   preferences = var.preferences
 }
