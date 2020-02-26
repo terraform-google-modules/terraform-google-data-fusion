@@ -56,6 +56,12 @@ Functional examples are included in the
 | subnet | Subnet to use for the Dataproc cluster | string | `""` | no |
 | worker | Config of the Dataproc cluster worker | object | `<map>` | no |
 
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| name | name of the compute profile created. This can be referenced in a program run's runtime arguments to use this compute profile for said program run. |
+
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Requirements

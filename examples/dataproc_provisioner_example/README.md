@@ -3,6 +3,12 @@
 This example illustrates how to use the `dataproc_provisioner` module.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|:----:|:-----:|:-----:|
+| profile\_name | The name of the cdap profile to create. | string | `"verbose_dataproc"` | no |
+
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 To provision this example, run the following from within this directory:
