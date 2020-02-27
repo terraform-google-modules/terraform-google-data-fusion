@@ -20,6 +20,6 @@ variable "name" {
 }
 
 variable "preferences" {
-  description = "map of preferences to define the namespace"
+  description = "Map of preferences to define the namespace."
   type        = map(string)
 }
