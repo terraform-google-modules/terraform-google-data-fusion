@@ -14,12 +14,11 @@
  * limitations under the License.
  */
 
-
-resource "cdap_namespace" "parent" {
+resource "cdap_namespace" "namespace" {
   name = var.name
 }
 
-resource "cdap_namespace_preferences" "parent_preferences" {
+resource "cdap_namespace_preferences" "preferences" {
   namespace   = cdap_namespace.parent.name
   preferences = var.preferences
 }

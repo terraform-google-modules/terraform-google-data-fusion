@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-
 resource "cdap_profile" "dataproc_provisioner" {
   name      = var.name
   label     = var.label
