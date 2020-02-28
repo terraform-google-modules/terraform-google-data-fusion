@@ -22,7 +22,7 @@ data "google_client_config" "current" {
 }
 
 provider "cdap" {
-    host = "https://adp-ingestion-n-gd-mps-adp-afhiretl-n-d393-dot-usc1.datafusion.googleusercontent.com/api/"
+    host = "https://test-instance.datafusion.googleusercontent.com/api/"
     token = data.google_client_config.current.access_token
 }
 
