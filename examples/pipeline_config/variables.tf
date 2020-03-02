@@ -21,7 +21,7 @@ variable "profile_name" {
 }
 
 variable "data_fusion_service_endpoint" {
-	description = "Endpoint that request hits"
+	description = "URL of instance (endpoint)"
 	type = string
 }
 
