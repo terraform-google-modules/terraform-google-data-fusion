@@ -15,7 +15,6 @@ module "data_fusion" {
   project = "example-project"
   region  = "us-central1"
 }
-}
 ```
 
 Functional examples are included in the
