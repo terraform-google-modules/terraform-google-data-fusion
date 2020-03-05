@@ -16,5 +16,5 @@
 
 output "name" {
   value = cdap_profile.dataproc_provisioner.name
-  description = "name of the compute profile created. This can be referenced in a program run's runtime arguments to use this compute profile for said program run."
+  description = "Name of the compute profile created. Useful for passing as a runtime arg in CDAP programs."
 }
