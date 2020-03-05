@@ -35,7 +35,6 @@ json_config_path             = "${path.module}/example_pipeline.json"
 name                         = "sample_name"
 namespace                    = "default"
 data_fusion_service_endpoint = var.data_fusion_service_endpoint
-	
 }
 
   
