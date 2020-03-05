@@ -46,12 +46,8 @@ Functional examples are included in the
 | label | Label of the profile | string | n/a | yes |
 | master | Config of the cluster master | object | `<map>` | no |
 | name | Name of the profile | string | n/a | yes |
-<<<<<<< HEAD
 | namespace | Namespace to deploy profile in | string | `"default"` | no |
 | network | Network to use for the Dataproc cluster | string | `"default"` | no |
-=======
-| network | Network to use for the cluster | string | `"default"` | no |
->>>>>>> parent of 0b54aca... feat: Add example of adding extra properties (#3)
 | network\_host\_project\_id | Project ID of the network | string | `""` | no |
 | project | ID of the project hosting the cluster | string | `"auto-detect"` | no |
 | region | Region of the dataproc cluster | string | `"auto-detect"` | no |
