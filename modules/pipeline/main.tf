@@ -16,11 +16,6 @@
      
 data "google_client_config" "current" {}
 
-provider "cdap" {
-  host  = "${var.data_fusion_service_endpoint}/api/"
-  token = data.google_client_config.current.access_token
-}
-
 resource "cdap_application" "pipeline" {
   artifact {
     name     = var.artifact_name
