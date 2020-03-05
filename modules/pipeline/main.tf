@@ -31,8 +31,4 @@ resource "cdap_application" "pipeline" {
   config     = file(var.json_config_path)
   name       = var.name
   namespace  = var.namespace
-  
-}
-
-
-
+  }
