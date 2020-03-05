@@ -24,12 +24,6 @@ variable "artifact_name" {
   type        = string
 }
 
-variable "config" {
-  description = "The JSON encoded configuration of the pipeline."
-  type        = map(string)
-  default     = {}
-}
-
 variable "json_config_path" {
   description = "relative path to exported pipeline JSON"
   type        = string
