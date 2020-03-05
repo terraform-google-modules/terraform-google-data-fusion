@@ -34,9 +34,4 @@ artifact_name                = var.artifact_name
 json_config_path             = "${path.module}/pipeline_directory/example_pipeline.json"
 name                         = "sample_name"
 namespace                    = "default"
-data_fusion_service_endpoint = var.data_fusion_service_endpoint
 }
-
-  
-  
-
