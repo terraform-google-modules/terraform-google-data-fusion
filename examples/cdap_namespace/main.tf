@@ -18,8 +18,7 @@ provider "google" {
   version = "~> 3.0"
 }
 
-data "google_client_config" "current" {
-}
+data "google_client_config" "current" {}
 
 provider "cdap" {
   host  = "https://example-df-host.com/api/"
@@ -33,5 +32,4 @@ module "staging" {
   preferences = {
     FOO = "BAR"
   }
-
 }

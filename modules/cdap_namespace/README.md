@@ -7,7 +7,21 @@ It supports defining a namespace and all it's preferences in a single module cal
 Basic usage of this module is as follows:
 
 ```hcl
-TODO(jaketf)
+data "google_client_config" "current" {}
+
+provider "cdap" {
+  host  = "https://example-df-host.com/api/"
+  token = data.google_client_config.current.access_token
+}
+
+module "staging" {
+  source = "../../modules/cdap_namespace"
+
+  name = var.name
+  preferences = {
+    FOO = "BAR"
+  }
+}
 ```
 
 Functional examples are included in the
