@@ -14,6 +14,13 @@
  * limitations under the License.
  */
 
+# TODO(jferriero) remove this 
+data "google_client_config" "current" {}
+
+provider "cdap" {
+  host  = "https://test0-jferriero-dev-dot-usc1.datafusion.googleusercontent.com/api/"
+  token = data.google_client_config.current.access_token
+}
 
 resource "cdap_profile" "dataproc_provisioner" {
   name      = var.name
