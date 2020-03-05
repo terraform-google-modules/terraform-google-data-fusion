@@ -1,19 +1,26 @@
-# terraform-google-data-fusion
+# CDAP Namespace with Preferences
 
-This module handle opinionated Google Cloud Platform Data Fusion instances.
-
+This module can be used to manage CDAP namespaces with terraform.
+It supports defining a namespace and all it's preferences in a single module call
 ## Usage
 
 Basic usage of this module is as follows:
 
 ```hcl
-module "data_fusion" {
-  source  = "terraform-google-modules/data-fusion/google"
-  version = "~> 0.1"
+data "google_client_config" "current" {}
 
-  name    = "example-instance"
-  project = "example-project"
-  region  = "us-central1"
+provider "cdap" {
+  host  = "https://example-df-host.com/api/"
+  token = data.google_client_config.current.access_token
+}
+
+module "staging" {
+  source = "../../modules/cdap_namespace"
+
+  name = var.name
+  preferences = {
+    FOO = "BAR"
+  }
 }
 ```
 
@@ -25,27 +32,21 @@ Functional examples are included in the
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| description | An optional description of the instance. | string | `"null"` | no |
-| labels | The resource labels for instance to use to annotate any related underlying resources, such as Compute Engine VMs. | map(string) | `<map>` | no |
-| name | Name of the instance. | string | n/a | yes |
-| network\_config | Network configuration options as defined in https://www.terraform.io/docs/providers/google/r/data_fusion_instance.html#network_config. Setting this implies a private instance. | object | `"null"` | no |
-| options | Map of additional options used to configure the behavior of Data Fusion instance. | map(string) | `<map>` | no |
-| project | The project ID to deploy to. | string | n/a | yes |
-| region | The region of the instance. | string | n/a | yes |
-| type | Represents the type of the instance (BASIC or ENTERPRISE) | string | `"ENTERPRISE"` | no |
+| name | Name of the profile | string | n/a | yes |
+| preferences | Name of the profile | map(string) | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| instance | The created CDF instance |
-| tenant\_project | The Google managed tenant project ID in which the instance will run its jobs |
+| name | The created CDAP namespace |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Requirements
 
-These sections describe requirements for using this module.
+This module requires the
+[Terraform CDAP provider](https://googlecloudplatform.github.io/terraform-provider-cdap/).
 
 ### Software
 
