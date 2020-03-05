@@ -14,8 +14,22 @@
  * limitations under the License.
  */
 
-variable "profile_name" {
-  description = "The name of the cdap profile to create."
-  type        = string
-  default     = "verbose_dataproc"
+provider "google" {
+  version = "~> 3.0"
+}
+
+data "google_client_config" "current" {}
+
+provider "cdap" {
+  host  = "https://example-df-host.com/api/"
+  token = data.google_client_config.current.access_token
+}
+
+module "staging" {
+  source = "../../modules/cdap_namespace"
+
+  name = var.name
+  preferences = {
+    FOO = "BAR"
+  }
 }

@@ -1,13 +1,14 @@
 # Dataproc Compute Profile with Yarn Container Logs in StackDriver
 
-This example illustrates how to use the `dataproc_provisioner` module.
+This example illustrates how to use the `cdap_namespace` module.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| profile\_name | The name of the cdap profile to create. | string | `"verbose_dataproc"` | no |
+| name | The name of the cdap namespace to create. | string | n/a | yes |
+| preferences | map of preferences to define the namespace | map(string) | n/a | yes |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
