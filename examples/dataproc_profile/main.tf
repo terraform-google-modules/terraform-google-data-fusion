@@ -27,7 +27,7 @@ provider "cdap" {
 }
 
 module "verbose_dataproc" {
-  source = "../../modules/dataproc_provisioner"
+  source = "../../modules/dataproc_profile"
 
   name  = var.profile_name
   label = var.profile_name

@@ -26,7 +26,7 @@ provider "cdap" {
 }
 
 module "staging" {
-  source = "../../modules/cdap_namespace"
+  source = "../../modules/namespace"
 
   name = var.name
   preferences = {
