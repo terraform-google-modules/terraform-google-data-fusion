@@ -18,7 +18,7 @@ provider "cdap" {
 }
 
 module "custom_dataproc" {
-  source  = "terraform-google-modules/data-fusion/google//modules/dataproc_provisioner"
+  source  = "terraform-google-modules/data-fusion/google//modules/dataproc_profile"
   version = "~> 0.1"
 
   name   = "custom-dataproc"
