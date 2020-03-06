@@ -1,4 +1,4 @@
-# Dataproc Provisioner
+# Dataproc Profile
 
 This module can be used to deploy a custom compute profile for a GCP dataproc
 provisioner. The default dataproc provisioner has unconfigurable settings such
