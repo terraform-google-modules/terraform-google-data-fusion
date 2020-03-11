@@ -56,6 +56,12 @@ Functional examples are included in the
 | subnet | Subnet to use for the Dataproc cluster | string | `""` | no |
 | worker | Config of the Dataproc cluster worker | object | `<map>` | no |
 
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| profile | The created profile |
+
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Requirements
