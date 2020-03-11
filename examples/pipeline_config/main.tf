@@ -25,8 +25,8 @@ provider "cdap" {
   host  = "https://example-df-host.com/api/"
   token = data.google_client_config.current.access_token
 }
-
-module "verbose_pipeline" {
+   
+module "quickstart_pipeline" {
   source = "../../modules/pipeline"
 
 artifact                     = var.artifact
