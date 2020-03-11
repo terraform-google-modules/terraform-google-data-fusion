@@ -1,4 +1,4 @@
-# Dataproc Provisioner
+# Hub Artifact
 
 This module can be used to deploy an artifact (plugin) from the GCS bucket of
 a data fusion instance hub.
