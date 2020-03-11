@@ -1,6 +1,9 @@
 # Pipeline Configuration
 
 This example illustrates how to use the `pipeline_config` module.
+This will automate deploying a data fusion app but will not start it.
+Starting a program run should be managed as a separate `streaming_program_run` resource.
+Batch pipelines should not be managed with terraform as they would be restarted on every terraform apply [See similar context for `google_dataflow_job` resource](https://www.terraform.io/docs/providers/google/r/dataflow_job.html#note-on-quot-destroy-quot-quot-apply-quot-). 
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
