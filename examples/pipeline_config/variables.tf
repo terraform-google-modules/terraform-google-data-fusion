@@ -15,7 +15,7 @@
  */
 
 variable "data_fusion_service_endpoint" {
-	description = "URL of instance (endpoint)"
+	description = "URL of instance (apiEndpoint)"
 	type = string
 }
 
