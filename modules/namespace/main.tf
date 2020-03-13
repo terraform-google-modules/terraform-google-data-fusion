@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 Google LLC
+ * Copyright 2020 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,24 +14,11 @@
  * limitations under the License.
  */
 
-provider "google" {
-  version = "~> 3.0"
+resource "cdap_namespace" "namespace" {
+  name = var.name
 }
 
-data "google_client_config" "current" {
-}
-
-provider "cdap" {
-  host  = "https://example-df-host.com/api/"
-  token = data.google_client_config.current.access_token
-}
-
-module "verbose_dataproc" {
-  source = "../../modules/dataproc_provisioner"
-
-  name  = var.profile_name
-  label = var.profile_name
-  extra_properties = {
-    "dataproc:dataproc.logging.stackdriver.job.yarn.container.enable" = true
-  }
+resource "cdap_namespace_preferences" "preferences" {
+  namespace   = cdap_namespace.parent.name
+  preferences = var.preferences
 }
