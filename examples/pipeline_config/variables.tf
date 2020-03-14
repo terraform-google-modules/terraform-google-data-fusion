@@ -15,7 +15,7 @@
  */
 
 variable "data_fusion_service_endpoint" {
-	description = "Endpoint that request hits"
+	description = "URL of instance (apiEndpoint)."
 	type = string
 }
 
@@ -25,6 +25,6 @@ variable "artifact" {
 }
 
 variable "artifact_name" {
-  description = "The name of the artifact. This will be the app name"
+  description = "The name of the artifact. This will be the app name."
   type        = string
 }
