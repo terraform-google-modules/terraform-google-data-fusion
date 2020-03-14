@@ -40,7 +40,6 @@ variable "name" {
   type        = string
 }
 
-
 variable "namespace" {
   description = "The name of the namespace which resource belongs."
   type        = string
@@ -50,5 +49,3 @@ variable "data_fusion_service_endpoint" {
   description = "Endpoint hit when CDF is called"
   type        = string
 }
-
-
