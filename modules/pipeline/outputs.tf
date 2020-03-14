@@ -12,11 +12,9 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- 
+ */
 
 output "name" {
   description = "The name of the data fusion instance."
   value       = cdap_applications.pipeline.name
-
 }
-*/
