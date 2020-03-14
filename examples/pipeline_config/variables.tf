@@ -25,6 +25,6 @@ variable "artifact" {
 }
 
 variable "artifact_name" {
-  description = "The name of the artifact."
+  description = "The name of the artifact. This will be the app name"
   type        = string
 }
