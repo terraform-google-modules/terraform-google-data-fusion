@@ -14,12 +14,6 @@
  * limitations under the License.
  */
 
-variable "profile_name" {
-  description = "The name of the cdap profile to create."
-  type        = string
-  default     = "verbose_pipeline"
-}
-
 variable "data_fusion_service_endpoint" {
 	description = "Endpoint that request hits"
 	type = string
