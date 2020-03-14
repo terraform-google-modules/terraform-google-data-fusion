@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-
-
 data "google_client_config" "current" {}
 
 provider "cdap" {
@@ -31,8 +29,4 @@ resource "cdap_application" "pipeline" {
   config     = file(var.json_config_path)
   name       = var.name
   namespace  = var.namespace
-  
-}
-
-
-
+ }
