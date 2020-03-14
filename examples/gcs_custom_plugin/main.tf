@@ -26,17 +26,13 @@ provider "cdap" {
   token = data.google_client_config.current.access_token
 }
 
-module "verbose_plugin" {
+module "custom_plugin" {
   source = "../../modules/custom_plugin"
 
-jar_binary_path                     = var.jar_binary_path
+jar_binary_path                 = var.jar_binary_path
 json_config_path                = var.json_config_path
-version_x                           = var.version_x
-name                         = "sample_name"
-namespace                    = "default"
-data_fusion_service_endpoint = var.data_fusion_service_endpoint
-	
+version_x                       = var.version_x
+name                            = "sample_name"
+namespace                       = "default"
+data_fusion_service_endpoint    = var.data_fusion_service_endpoint
 }
-
-  
-  
