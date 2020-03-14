@@ -1,1 +1,146 @@
-
+{
+  "name": "DataFusionQuickstart",
+  "description": "Data Pipeline Application",
+  "artifact": {
+    "name": "cdap-data-pipeline",
+    "version": "6.1.1",
+    "scope": "SYSTEM"
+  },
+  "config": {
+    "resources": {
+      "memoryMB": 1024,
+      "virtualCores": 1
+    },
+    "driverResources": {
+      "memoryMB": 1024,
+      "virtualCores": 1
+    },
+    "connections": [
+      {
+        "from": "NYT Best Sellers Raw Data",
+        "to": "Parsing and Transformations"
+      },
+      {
+        "from": "Parsing and Transformations",
+        "to": "Top Rated Inexpensive Books"
+      }
+    ],
+    "comments": [],
+    "postActions": [],
+    "properties": {},
+    "processTimingEnabled": true,
+    "stageLoggingEnabled": true,
+    "stages": [
+      {
+        "name": "NYT Best Sellers Raw Data",
+        "plugin": {
+          "name": "GCSFile",
+          "type": "batchsource",
+          "label": "NYT Best Sellers Raw Data",
+          "artifact": {
+            "name": "google-cloud",
+            "version": "0.13.2",
+            "scope": "SYSTEM"
+          },
+          "properties": {
+            "filenameOnly": "false",
+            "copyHeader": "false",
+            "schema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"body\",\"type\":\"string\"}]}",
+            "path": "gs://nyt-bestsellers/nyt2.json",
+            "format": "text",
+            "recursive": "false",
+            "referenceName": "NYT_BestSellers_Raw",
+            "serviceFilePath": "auto-detect",
+            "project": "auto-detect"
+          }
+        },
+        "outputSchema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"body\",\"type\":\"string\"}]}",
+        "type": "batchsource",
+        "label": "NYT Best Sellers Raw Data",
+        "icon": "fa-plug"
+      },
+      {
+        "name": "Parsing and Transformations",
+        "plugin": {
+          "name": "Wrangler",
+          "type": "transform",
+          "label": "Parsing and Transformations",
+          "artifact": {
+            "name": "wrangler-transform",
+            "version": "4.1.4",
+            "scope": "SYSTEM"
+          },
+          "properties": {
+            "workspaceId": "b22b1b0c24b12acd45f834ac5e1dfffb",
+            "directives": "split-to-rows body \\n\nparse-as-json :body 1\nparse-as-json :body__id 1\nparse-as-json :body_weeks_on_list 1\nparse-as-json :body_rank_last_week 1\nparse-as-json :body_rank 1\nparse-as-json :body_price 1\nparse-as-json :body_published_date 2\nparse-as-json :body_bestsellers_date 2\ncolumns-replace s/^body_//g\ncleanse-column-names\nrename _id__oid id\nrename weeks_on_list__numberint weeks_on_list\nrename rank_last_week__numberint rank_last_week\nrename rank__numberint rank\nrename price__numberint price\nrename published_date__date__numberlong published_date\nrename bestsellers_date__date__numberlong bestsellers_date\nrename price__numberdouble price_other\nfill-null-or-empty :price '0'\nfill-null-or-empty :price_other '0'\nset-type :price float\nset-type :price_other float\nset-column :price_final price+price_other\ndrop price\ndrop price_other\nset-type :published_date long\nset-type :bestsellers_date long\nset-type :weeks_on_list integer\nset-type :rank_last_week integer\nset-type :rank integer\nfilter-rows-on regex-not-match rank_last_week ^0$\ndrop rank_last_week\ndrop weeks_on_list\ndrop published_date\ndrop bestsellers_date\nfilter-rows-on condition-false rank <=3\nfilter-rows-on regex-match price_final ^0.0$\nfilter-rows-on condition-false price_final <25.0",
+            "schema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"amazon_product_url\",\"type\":[\"string\",\"null\"]},{\"name\":\"author\",\"type\":[\"string\",\"null\"]},{\"name\":\"description\",\"type\":[\"string\",\"null\"]},{\"name\":\"publisher\",\"type\":[\"string\",\"null\"]},{\"name\":\"title\",\"type\":[\"string\",\"null\"]},{\"name\":\"id\",\"type\":[\"string\",\"null\"]},{\"name\":\"rank\",\"type\":[\"int\",\"null\"]},{\"name\":\"price_final\",\"type\":[\"double\",\"null\"]}]}",
+            "field": "body",
+            "precondition": "false",
+            "threshold": "1"
+          }
+        },
+        "outputSchema": [
+          {
+            "name": "etlSchemaBody",
+            "schema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"amazon_product_url\",\"type\":[\"string\",\"null\"]},{\"name\":\"author\",\"type\":[\"string\",\"null\"]},{\"name\":\"description\",\"type\":[\"string\",\"null\"]},{\"name\":\"publisher\",\"type\":[\"string\",\"null\"]},{\"name\":\"title\",\"type\":[\"string\",\"null\"]},{\"name\":\"id\",\"type\":[\"string\",\"null\"]},{\"name\":\"rank\",\"type\":[\"int\",\"null\"]},{\"name\":\"price_final\",\"type\":[\"double\",\"null\"]}]}"
+          }
+        ],
+        "inputSchema": [
+          {
+            "name": "NYT Best Sellers Raw Data",
+            "schema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"body\",\"type\":\"string\"}]}"
+          }
+        ],
+        "type": "transform",
+        "label": "Parsing and Transformations",
+        "icon": "icon-DataPreparation"
+      },
+      {
+        "name": "Top Rated Inexpensive Books",
+        "plugin": {
+          "name": "BigQueryTable",
+          "type": "batchsink",
+          "label": "Top Rated Inexpensive Books",
+          "artifact": {
+            "name": "google-cloud",
+            "version": "0.13.2",
+            "scope": "SYSTEM"
+          },
+          "properties": {
+            "project": "auto-detect",
+            "serviceFilePath": "auto-detect",
+            "operation": "insert",
+            "truncateTable": "false",
+            "allowSchemaRelaxation": "false",
+            "location": "US",
+            "createPartitionedTable": "false",
+            "partitionFilterRequired": "false",
+            "schema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"amazon_product_url\",\"type\":[\"string\",\"null\"]},{\"name\":\"author\",\"type\":[\"string\",\"null\"]},{\"name\":\"description\",\"type\":[\"string\",\"null\"]},{\"name\":\"publisher\",\"type\":[\"string\",\"null\"]},{\"name\":\"title\",\"type\":[\"string\",\"null\"]},{\"name\":\"id\",\"type\":[\"string\",\"null\"]},{\"name\":\"rank\",\"type\":[\"int\",\"null\"]},{\"name\":\"price_final\",\"type\":[\"double\",\"null\"]}]}",
+            "referenceName": "Top_Rated_Inexpensive_Books",
+            "dataset": "GCPQuickStart",
+            "table": "top_rated_inexpensive"
+          }
+        },
+        "outputSchema": [
+          {
+            "name": "etlSchemaBody",
+            "schema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"amazon_product_url\",\"type\":[\"string\",\"null\"]},{\"name\":\"author\",\"type\":[\"string\",\"null\"]},{\"name\":\"description\",\"type\":[\"string\",\"null\"]},{\"name\":\"publisher\",\"type\":[\"string\",\"null\"]},{\"name\":\"title\",\"type\":[\"string\",\"null\"]},{\"name\":\"id\",\"type\":[\"string\",\"null\"]},{\"name\":\"rank\",\"type\":[\"int\",\"null\"]},{\"name\":\"price_final\",\"type\":[\"double\",\"null\"]}]}"
+          }
+        ],
+        "inputSchema": [
+          {
+            "name": "Parsing and Transformations",
+            "schema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"amazon_product_url\",\"type\":[\"string\",\"null\"]},{\"name\":\"author\",\"type\":[\"string\",\"null\"]},{\"name\":\"description\",\"type\":[\"string\",\"null\"]},{\"name\":\"publisher\",\"type\":[\"string\",\"null\"]},{\"name\":\"title\",\"type\":[\"string\",\"null\"]},{\"name\":\"id\",\"type\":[\"string\",\"null\"]},{\"name\":\"rank\",\"type\":[\"int\",\"null\"]},{\"name\":\"price_final\",\"type\":[\"double\",\"null\"]}]}"
+          }
+        ],
+        "type": "batchsink",
+        "label": "Top Rated Inexpensive Books",
+        "icon": "fa-plug"
+      }
+    ],
+    "schedule": "0 * * * *",
+    "engine": "mapreduce",
+    "numOfRecordsPreview": 100,
+    "maxConcurrentRuns": 1
+  }
+}
