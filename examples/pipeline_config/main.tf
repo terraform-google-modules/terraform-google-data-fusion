@@ -26,12 +26,12 @@ provider "cdap" {
   token = data.google_client_config.current.access_token
 }
 
-module "verbose_pipeline" {
+module "quickstart_pipeline" {
   source = "../../modules/pipeline"
 
 artifact                     = var.artifact
 artifact_name                = var.artifact_name
-json_config_path             = "${path.module}/example_pipeline.json"
+json_config_path             = "${path.module}/pipeline/example_pipeline.json"
 name                         = "sample_name"
 namespace                    = "default"
 data_fusion_service_endpoint = var.data_fusion_service_endpoint
