@@ -1,6 +1,6 @@
 # Pipeline Module
 
-This module can be used to deploy a CDF instance in GCP. 
+This module can be used to deploy a CDF pipeline in GCP. 
 
 ## Usage
 
