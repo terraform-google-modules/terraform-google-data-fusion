@@ -1,6 +1,7 @@
-# Pipeline Module
+# Pipeline Configuration
 
-This module can be used to deploy a CDF pipeline in GCP. 
+This module can be used to configure a pipeline in a GCP Datafusion
+instance. The namespace is required as it will help assist with certain tasks in GCP Datafusion.
 
 ## Usage
 
@@ -14,17 +15,12 @@ provider "cdap" {
   token = data.google_client_config.current.access_token
 }
 
-module "custom_instance" {
-  source  = "terraform-google-modules/data-fusion/google//modules/dataproc_provisioner"
+module "custom_pipeline" {
+  source  = "terraform-google-modules/data-fusion/google//modules/pipeline"
   version = "~> 0.1"
 
-  name   = "instance"
-
-
-  network         = "example-network"
-  subnet          = "example-subnetwork"
-  service_account = "example-sa"
- 
+  name   = "custom-pipeline"
+  
 }
 ```
 
@@ -36,15 +32,11 @@ Functional examples are included in the
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
+| artifact | The artifact used to create the pipeline | string | `""` | no |
+| artifact\_name | The name of the artifact. This will be the app name. | string | `""` | yes |
+| spec | The full contents of the exported pipeline JSON spec. | string | `""` | yes |
 | name | The name of the instance. | string | `""` | no |
-| project | The project ID to deploy to. | string | `""` | no |
-| description | An optional description of the instance. | string | `""` | no |
-| region | The region of the instance. | string | `""` | no |
-| type | Represents the type of the instance (basic or enterprise) | string | `""` | no |
-| labels | The resource labels for instance to use to annotate any related underlying resources, such as Compute Engine VMs. | map(string) | n/a | yes |
-| options | Map of additional options used to configure the behavior of Data Fusion instance. | map(string) | n/a | no |
-| network\_config | Network configuration options as defined in https://www.terraform.io/docs/providers/google/r/data_fusion_instance.html#network_config. Setting this implies a private instance. | object | n/a | yes |
-| 
+| namespace | The name of the namespace to which the resource belongs. | string | `""` | yes |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
