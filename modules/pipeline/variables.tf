@@ -14,29 +14,13 @@
  * limitations under the License.
  */
 
-variable "artifact" {
-  description = "The artifact used to create the pipeline."
-  type        = string
-}
-
-variable "artifact_name" {
+variable "name" {
   description = "The name of the artifact."
   type        = string
 }
 
-variable "config" {
-  description = "The JSON encoded configuration of the pipeline."
-  type        = map(string)
-  default     = {}
-}
-
-variable "json_config_path" {
-  description = "relative path to exported pipeline JSON"
-  type        = string
-}
-
-variable "name" {
-  description = "Name of the instance."
+variable "json_spec_path" {
+  description = "The exported JSON pipeline spec with the checkpointDir key removed."
   type        = string
 }
 
@@ -45,7 +29,14 @@ variable "namespace" {
   type        = string
 }
 
-variable "data_fusion_service_endpoint" {
-  description = "Endpoint hit when CDF is called"
-  type        = string
+variable "macros" {
+  description = "macros that should be rendered at terraform apply time due to CDAP-10941"
+  type        = map
+  default     = {}
+}
+
+variable "artifacts" {
+  description = "A list of artifacts (such as custom plugins) that this pipeline uses. This creates the dependency in terraform."
+  type        = list
+  default     = []
 }
