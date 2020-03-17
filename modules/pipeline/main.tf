@@ -14,19 +14,12 @@
  * limitations under the License.
  */
 
-data "google_client_config" "current" {}
-
-provider "cdap" {
-  host  = "${var.data_fusion_service_endpoint}/api/"
-  token = data.google_client_config.current.access_token
-}
-
 resource "cdap_application" "pipeline" {
-  artifact {
-    name     = var.artifact_name
-    version  = "6.1.1"
+  spec      = templatefile(var.json_spec_path, var.macros)
+  name      = var.name
+  namespace = var.namespace
+  lifecycle {
+    ignore_changes  = [spec]
+    prevent_destroy = true
   }
-  config     = file(var.json_config_path)
-  name       = var.name
-  namespace  = var.namespace
- }
+}

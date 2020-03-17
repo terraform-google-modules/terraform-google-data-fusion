@@ -15,6 +15,6 @@
  */
 
 output "name" {
-  description = "The name of the data fusion instance."
-  value       = cdap_applications.pipeline.name
+  description = "The name of the CDAP pipeline."
+  value       = cdap_application.pipeline.name
 }

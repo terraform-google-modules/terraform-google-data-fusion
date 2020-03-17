@@ -32,11 +32,17 @@ Functional examples are included in the
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| artifact | The artifact used to create the pipeline | string | `""` | no |
-| artifact\_name | The name of the artifact. This will be the app name. | string | `""` | yes |
-| spec | The full contents of the exported pipeline JSON spec. | string | `""` | yes |
-| name | The name of the instance. | string | `""` | no |
-| namespace | The name of the namespace to which the resource belongs. | string | `""` | yes |
+| artifacts | A list of artifacts (such as custom plugins) that this pipeline uses. This creates the dependency in terraform. | list | `<list>` | no |
+| json\_spec\_path | The exported JSON pipeline spec with the checkpointDir key removed. | string | n/a | yes |
+| macros | macros that should be rendered at terraform apply time due to CDAP-10941 | map | `<map>` | no |
+| name | The name of the artifact. | string | n/a | yes |
+| namespace | The name of the namespace which resource belongs. | string | n/a | yes |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| name | The name of the CDAP pipeline. |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
