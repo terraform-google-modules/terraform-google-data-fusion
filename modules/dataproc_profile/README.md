@@ -1,4 +1,4 @@
-# Dataproc Provisioner
+# Dataproc Profile
 
 This module can be used to deploy a custom compute profile for a GCP dataproc
 provisioner. The default dataproc provisioner has unconfigurable settings such
@@ -18,7 +18,7 @@ provider "cdap" {
 }
 
 module "custom_dataproc" {
-  source  = "terraform-google-modules/data-fusion/google//modules/dataproc_provisioner"
+  source  = "terraform-google-modules/data-fusion/google//modules/dataproc_profile"
   version = "~> 0.1"
 
   name   = "custom-dataproc"
@@ -54,6 +54,12 @@ Functional examples are included in the
 | service\_account | Service account to run the cluster as | string | `""` | no |
 | subnet | Subnet to use for the cluster | string | `""` | no |
 | worker | Config of the cluster worker | object | `<map>` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| profile | The created profile |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

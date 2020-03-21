@@ -18,20 +18,18 @@ provider "google" {
   version = "~> 3.0"
 }
 
-data "google_client_config" "current" {
-}
+data "google_client_config" "current" {}
 
 provider "cdap" {
-    host = "https://adp-ingestion-n-gd-mps-adp-afhiretl-n-d393-dot-usc1.datafusion.googleusercontent.com/api/"
-    token = data.google_client_config.current.access_token
+  host  = "https://example-df-host.com/api/"
+  token = data.google_client_config.current.access_token
 }
 
-module "verbose_dataproc" {
-  source = "../../modules/dataproc_provisioner"
+module "staging" {
+  source = "../../modules/namespace"
 
-  name = var.profile_name
-  label = var.profile_name
-  extra_properties = {
-    "dataproc:dataproc.logging.stackdriver.job.yarn.container.enable" = true
+  name = var.name
+  preferences = {
+    FOO = "BAR"
   }
 }

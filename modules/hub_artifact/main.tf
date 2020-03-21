@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 Google LLC
+ * Copyright 2020 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,22 +14,14 @@
  * limitations under the License.
  */
 
-provider "google" {
-  version = "~> 3.0"
+locals {
+  gcs_path = "gs://${var.bucket}/packages/${var.package}/${var.artifact_version}/${var.name}-${var.artifact_version}"
 }
 
-data "google_client_config" "current" {}
-
-provider "cdap" {
-  host  = "https://example-df-host.com/api/"
-  token = data.google_client_config.current.access_token
-}
-
-module "staging" {
-  source = "../../modules/cdap_namespace"
-
-  name = var.name
-  preferences = {
-    FOO = "BAR"
-  }
+resource "cdap_gcs_artifact" "artifact" {
+  name             = var.name
+  version          = var.artifact_version
+  namespace        = var.namespace
+  jar_binary_path  = "${local.gcs_path}.jar"
+  json_config_path = "${local.gcs_path}.json"
 }
