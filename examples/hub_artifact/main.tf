@@ -33,5 +33,4 @@ module "connectors_streaming_1_0_0" {
   package          = "healthcare-cloud-api-connectors"
   name             = "connectors-streaming"
   artifact_version = "1.0.0"
-  namespace        = cdap_namespace.namespace.name
 }
