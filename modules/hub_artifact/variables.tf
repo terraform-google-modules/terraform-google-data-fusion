@@ -34,6 +34,12 @@ variable "artifact_version" {
   type        = string
 }
 
+variable "package_version" {
+  description = "Version of the package. If not set, the artifact version is used."
+  type        = string
+  default     = null
+}
+
 variable "namespace" {
   description = "Namespace to create the artifact in."
   type        = string
