@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 Google LLC
+ * Copyright 2020 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,22 +14,6 @@
  * limitations under the License.
  */
 
-provider "google" {
-  version = "~> 3.0"
-}
-
-data "google_client_config" "current" {}
-
-provider "cdap" {
-  host  = "https://example-df-host.com/api/"
-  token = data.google_client_config.current.access_token
-}
-
-module "staging" {
-  source = "../../modules/cdap_namespace"
-
-  name = var.name
-  preferences = {
-    FOO = "BAR"
-  }
+terraform {
+  required_version = ">= 0.12"
 }
