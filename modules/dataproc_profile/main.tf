@@ -151,5 +151,15 @@ resource "cdap_profile" "profile" {
       value       = "2"
       is_editable = true
     }
+
+    dynamic "properties" {
+      for_each = var.extra_properties
+
+      content {
+        name        = properties.key
+        value       = properties.value
+        is_editable = true
+      }
+    }
   }
 }
