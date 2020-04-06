@@ -41,6 +41,7 @@ Functional examples are included in the
 |------|-------------|:----:|:-----:|:-----:|
 | account\_key | Service account key to use for authentication | string | `""` | no |
 | encryption\_key\_name | Customer supplied encryption key used by the Dataproc cluster | string | `""` | no |
+| extra\_properties | Extra properties for the CDAP Profile payload. This can include Dataproc Cluster Properties https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/cluster-properties | map(string) | `<map>` | no |
 | gcs\_bucket | Dataproc Staging Bucket for job staging job artifacts and driver logs. | string | `""` | no |
 | image\_version | Dataproc image version to use for the Dataproc cluster | string | `""` | no |
 | label | CDAP Label of the profile | string | n/a | yes |
