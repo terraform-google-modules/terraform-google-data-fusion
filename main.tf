@@ -53,15 +53,3 @@ provider "cdap" {
   token = data.google_client_config.current.access_token
 }
 
-module "verbose_dataproc" {
-  source = "./modules/dataproc_profile"
-
-  name    = var.custom_profile_name
-  label   = var.custom_profile_name
-  region  = var.region
-  network = module.data_fusion_network.data_fusion_vpc.name
-  subnet  = module.data_fusion_network.dataproc_subnet.name
-  extra_properties = {
-    "dataproc:dataproc.logging.stackdriver.job.yarn.container.enable" = true
-  }
-}
