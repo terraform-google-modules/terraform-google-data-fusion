@@ -20,8 +20,8 @@ variable "project_id" {
 }
 
 
-variable "vpc_network" {
-  description = "Name for VPC network to be created and configured for private Data Fusion instance"
+variable "vpc_network_self_link" {
+  description = "Self-link for existing VPC network to be configured with firewall rules and peering for private Data Fusion instance"
   type        = string
 }
 

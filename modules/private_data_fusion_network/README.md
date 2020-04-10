@@ -37,7 +37,7 @@ Functional examples are included in the
 | project\_id | GCP Project ID to house resources for private Data Fusion setup | string | n/a | yes |
 | region | GCP region to create subnetwork for peering with private Data Fusion instance | string | `"us-central1"` | no |
 | tenant\_project | Private Data Fusion instance ID | string | n/a | yes |
-| vpc\_network | Name for VPC network to be created and configured for private Data Fusion instance | string | n/a | yes |
+| vpc\_network\_self\_link | Self-link for existing VPC network to be configured with firewall rules and peering for private Data Fusion instance | string | n/a | yes |
 
 ## Outputs
 

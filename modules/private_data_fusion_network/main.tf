@@ -28,15 +28,9 @@ resource "google_project_service" "project" {
   disable_dependent_services = true
 }
 
-resource "google_compute_network" "data_fusion_vpc" {
-  project                 = var.project_id
-  name                    = var.vpc_network
-  auto_create_subnetworks = false
-}
-
 resource "google_compute_network_peering" "peering1" {
   name         = "data-fusion-peering"
-  network      = google_compute_network.data_fusion_vpc.self_link
+  network      = var.vpc_network_self_link
   peer_network = "projects/${var.tenant_project}/global/networks/${var.region}-${var.instance}"
   import_custom_routes = "true"
   export_custom_routes = "true"
@@ -47,7 +41,7 @@ resource "google_compute_subnetwork" "dataproc" {
   name                     = var.dataproc_subnet
   ip_cidr_range            = var.dataproc_cidr
   region                   = var.region
-  network                  = google_compute_network.data_fusion_vpc.self_link
+  network                  = var.vpc_network_self_link
   private_ip_google_access = true
 }
 
@@ -57,13 +51,13 @@ resource "google_compute_global_address" "data_fusion_private_ip_alloc" {
   purpose       = "VPC_PEERING"
   address_type  = "INTERNAL"
   prefix_length = 22
-  network       = google_compute_network.data_fusion_vpc.self_link
+  network       = var.vpc_network_self_link
 }
 
 resource "google_compute_firewall" "allow-data-fusion-ssh" {
   project = var.project_id
   name    = "allow-private-data-fusion-ssh"
-  network = google_compute_network.data_fusion_vpc.name
+  network = var.vpc_network_self_link
 
   priority = "80"
 
@@ -79,7 +73,7 @@ resource "google_compute_firewall" "allow-data-fusion-ssh" {
 resource "google_compute_firewall" "dataproc_internal" {
   name    = "allow-dataproc-internal"
   project = var.project_id
-  network = google_compute_network.data_fusion_vpc.self_link
+  network = var.vpc_network_self_link
 
   allow {
     protocol = "icmp"
