@@ -15,7 +15,7 @@ Basic usage of this module is as follows:
 
 ```hcl
 module "private_data_fusion_network" {
-  source  = "terraform-google-modules/data-fusion/google/modules/private_data_fusion_network"
+  source  = "terraform-google-modules/data-fusion/google//modules/private_data_fusion_network"
   version = "~> 0.1"
 
   project_id  = your-gcp-project-id
