@@ -24,7 +24,7 @@ module "private_data_fusion_network" {
 ```
 
 Functional examples are included in the
-[examples](./examples/) directory.
+[examples](../../examples/) directory.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
