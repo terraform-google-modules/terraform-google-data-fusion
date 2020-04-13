@@ -19,7 +19,7 @@ module "private_data_fusion_network" {
   version = "~> 0.1"
 
   project_id  = your-gcp-project-id
-  vpc_network = data-fusion-net
+  vpc_network = "data-fusion-net"
 }
 ```
 
