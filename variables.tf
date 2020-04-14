@@ -25,12 +25,7 @@ variable "project" {
 }
 
 variable "network" {
-  description = "Name for VPC to create and configure for use with private Data Fusion instance."
-  type        = string
-}
-
-variable "custom_profile_name" {
-  description = "name for a custom Dataproc Provisioner Compute Profile."
+  description = "Name for VPC to create or reuse to be configured for use with private Data Fusion instance."
   type        = string
 }
 
