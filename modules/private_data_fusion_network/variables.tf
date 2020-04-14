@@ -20,19 +20,19 @@ variable "project_id" {
 }
 
 
-variable "vpc_network_self_link" {
-  description = "Self-link for existing VPC network to be configured with firewall rules and peering for private Data Fusion instance"
+variable "vpc_network" {
+  description = "VPC network to be created or configured with firewall rules and peering for private Data Fusion instance"
   type        = string
 }
 
 variable "instance" {
   description = "Private Data Fusion instance ID"
-  type = string
+  type        = string
 }
 
 variable "tenant_project" {
   description = "Private Data Fusion instance ID"
-  type = string
+  type        = string
 }
 
 variable "region" {

@@ -15,10 +15,6 @@
  */
 
 
-provider "google" {
-  version = "~> 3.0"
-}
-
 data "google_client_config" "current" {}
 
 resource "google_project_service" "project" {
@@ -28,21 +24,30 @@ resource "google_project_service" "project" {
   disable_dependent_services = true
 }
 
-resource "google_compute_network_peering" "peering1" {
-  name         = "data-fusion-peering"
-  network      = var.vpc_network_self_link
-  peer_network = "projects/${var.tenant_project}/global/networks/${var.region}-${var.instance}"
-  import_custom_routes = "true"
-  export_custom_routes = "true"
+module "vpc" {
+  source       = "terraform-google-modules/network/google"
+  version      = "~> 2.2"
+  project_id   = var.project_id
+  network_name = var.vpc_network
+  routing_mode = "GLOBAL"
+
+  subnets = [
+    {
+      subnet_name           = var.dataproc_subnet
+      subnet_ip             = var.dataproc_cidr
+      subnet_region         = var.region
+      subnet_private_access = true
+    }
+  ]
 }
 
-resource "google_compute_subnetwork" "dataproc" {
-  project                  = var.project_id
-  name                     = var.dataproc_subnet
-  ip_cidr_range            = var.dataproc_cidr
-  region                   = var.region
-  network                  = var.vpc_network_self_link
-  private_ip_google_access = true
+module "peering" {
+  source                     = "terraform-google-modules/terraform-google-network/google//modules/network-peering"
+  prefix                     = "data-fusion-peering"
+  local_network              = module.vpc.self_link
+  peer_network               = "projects/${var.tenant_project}/global/networks/${var.region}-${var.instance}"
+  export_local_custom_routes = true
+  export_peer_custom_routes  = true
 }
 
 resource "google_compute_global_address" "data_fusion_private_ip_alloc" {
@@ -54,40 +59,61 @@ resource "google_compute_global_address" "data_fusion_private_ip_alloc" {
   network       = var.vpc_network_self_link
 }
 
-resource "google_compute_firewall" "allow-data-fusion-ssh" {
-  project = var.project_id
-  name    = "allow-private-data-fusion-ssh"
-  network = var.vpc_network_self_link
+module "datafusion_firewall" {
+  source                  = "terraform-google-modules/terraform-google-network/google//modules/fabric-net-firewall"
+  project_id              = var.project_id
+  network                 = module.vpc.network_name
+  internal_ranges_enabled = true
+  internal_ranges         = module.vpc.subnets_ips
 
-  priority = "80"
-
-  allow {
-    protocol = "tcp"
-    ports    = ["22"]
-  }
-
-  source_ranges      = ["${google_compute_global_address.data_fusion_private_ip_alloc.address}/${google_compute_global_address.data_fusion_private_ip_alloc.prefix_length}"]
-  direction          = "INGRESS"
+  custom_rules = local.custom_rules
 }
 
-resource "google_compute_firewall" "dataproc_internal" {
-  name    = "allow-dataproc-internal"
-  project = var.project_id
-  network = var.vpc_network_self_link
+locals {
+  custom_rules = {
+    allow-data-fusion-ssh = {
+      description = "Allow IPs from the the allocation for private data fusion instance to SSH to dataproc clusters"
+      direction   = "INGRESS"
+      action      = "allow"
+      ranges      = ["${google_compute_global_address.data_fusion_private_ip_alloc.address}/${google_compute_global_address.data_fusion_private_ip_alloc.prefix_length}"]
 
-  allow {
-    protocol = "icmp"
+      rules = [{
+        protocol = "tcp"
+        ports    = ["22"]
+      }]
+
+      extra_attributes = {
+        priority = 80
+      }
+    }
+
+    dataproc-internal = {
+      description = "Allow IPs in dataproc subnet to talk to each other on all ports"
+      action      = "allow"
+      ranges      = [google_compute_subnetwork.dataproc.ip_cidr_range]
+
+      rules = [
+        {
+          protocol = "tcp"
+          ports    = ["22"]
+        },
+        {
+          protocol = "icmp"
+        },
+        {
+          protocol = "tcp"
+          ports    = ["1-65535"]
+        },
+
+        {
+          protocol = "udp"
+          ports    = ["1-65535"]
+        }
+      ]
+
+      extra_attributes = {
+        priority = 80
+      }
+    }
   }
-
-  allow {
-    protocol = "tcp"
-    ports    = ["1-65535"]
-  }
-
-  allow {
-    protocol = "udp"
-    ports    = ["1-65535"]
-  }
-
-  source_ranges      = [google_compute_subnetwork.dataproc.ip_cidr_range]
 }
