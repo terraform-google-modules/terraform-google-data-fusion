@@ -42,9 +42,9 @@ module "vpc" {
 }
 
 module "peering" {
-  source                     = "terraform-google-modules/terraform-google-network/google//modules/network-peering"
+  source                     = "terraform-google-modules/network/google//modules/network-peering"
   prefix                     = "data-fusion-peering"
-  local_network              = module.vpc.self_link
+  local_network              = module.vpc.network_self_link
   peer_network               = "projects/${var.tenant_project}/global/networks/${var.region}-${var.instance}"
   export_local_custom_routes = true
   export_peer_custom_routes  = true
@@ -56,49 +56,31 @@ resource "google_compute_global_address" "data_fusion_private_ip_alloc" {
   purpose       = "VPC_PEERING"
   address_type  = "INTERNAL"
   prefix_length = 22
-  network       = var.vpc_network_self_link
+  network       = module.vpc.network_self_link
 }
 
 module "datafusion_firewall" {
-  source                  = "terraform-google-modules/terraform-google-network/google//modules/fabric-net-firewall"
+  source                  = "terraform-google-modules/network/google//modules/fabric-net-firewall"
   project_id              = var.project_id
   network                 = module.vpc.network_name
   internal_ranges_enabled = true
   internal_ranges         = module.vpc.subnets_ips
 
-  custom_rules = local.custom_rules
-}
-
-locals {
   custom_rules = {
-    allow-data-fusion-ssh = {
-      description = "Allow IPs from the the allocation for private data fusion instance to SSH to dataproc clusters"
+    dataproc-internal = {
+      description = "Allow hosts in dataproc subnet to talk to each other on all ports"
       direction   = "INGRESS"
       action      = "allow"
-      ranges      = ["${google_compute_global_address.data_fusion_private_ip_alloc.address}/${google_compute_global_address.data_fusion_private_ip_alloc.prefix_length}"]
+      ranges      = [module.vpc.subnets["${var.region}/{var.dataproc_subnet}"].ip_cidr_range]
 
+      use_service_accounts = false
       rules = [{
         protocol = "tcp"
         ports    = ["22"]
-      }]
-
-      extra_attributes = {
-        priority = 80
-      }
-    }
-
-    dataproc-internal = {
-      description = "Allow IPs in dataproc subnet to talk to each other on all ports"
-      action      = "allow"
-      ranges      = [google_compute_subnetwork.dataproc.ip_cidr_range]
-
-      rules = [
-        {
-          protocol = "tcp"
-          ports    = ["22"]
         },
         {
           protocol = "icmp"
+          ports    = []
         },
         {
           protocol = "tcp"
@@ -110,6 +92,28 @@ locals {
           ports    = ["1-65535"]
         }
       ]
+
+      sources = null
+      targets = null
+
+      extra_attributes = {
+        priority = 80
+      }
+    }
+    allow-data-fusion-ssh = {
+      description          = "Allow IPs from the the allocation for private data fusion instance to SSH to dataproc clusters"
+      direction            = "INGRESS"
+      action               = "allow"
+      ranges               = ["${google_compute_global_address.data_fusion_private_ip_alloc.address}/${google_compute_global_address.data_fusion_private_ip_alloc.prefix_length}"]
+      use_service_accounts = true
+
+      rules = [{
+        protocol = "tcp"
+        ports    = ["22"]
+      }]
+
+      sources = [var.data_fusion_service_account]
+      targets = null
 
       extra_attributes = {
         priority = 80

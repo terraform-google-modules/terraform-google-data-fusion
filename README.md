@@ -25,6 +25,7 @@ Functional examples are included in the
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
+| data\_fusion\_service\_account | Google Managed Data Fusion Service Account Email | string | n/a | yes |
 | dataproc\_subnet | Name for subnet to create and configure for Dataproc clusters controlled by private Data Fusion instance. | string | `"dataproc-subnet"` | no |
 | description | An optional description of the instance. | string | `"null"` | no |
 | labels | The resource labels for instance to use to annotate any related underlying resources, such as Compute Engine VMs. | map(string) | `<map>` | no |

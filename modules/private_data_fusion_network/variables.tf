@@ -34,6 +34,10 @@ variable "tenant_project" {
   description = "Private Data Fusion instance ID"
   type        = string
 }
+variable "data_fusion_service_account" {
+  description = "The Google managed Data Fusion Service account"
+  type        = string
+}
 
 variable "region" {
   description = "GCP region to create subnetwork for peering with private Data Fusion instance"

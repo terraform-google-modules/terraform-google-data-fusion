@@ -14,14 +14,19 @@
  * limitations under the License.
  */
 
+output "network_name" {
+  description = "The VPC created for the private Data Fusion instance"
+  value       = module.vpc.network_name
+}
+
 output "data_fusion_vpc" {
   description = "The VPC created for the private Data Fusion instance"
-  value       = google_compute_network.data_fusion_vpc
+  value       = module.vpc.network
 }
 
 output "dataproc_subnet" {
   description = "The subnetwork created for Dataproc clusters controlled by the private Data Fusion instance"
-  value       = google_compute_subnetwork.dataproc
+  value       = module.vpc.subnets["${var.region}/${var.dataproc_subnet}"]
 }
 
 output "data_fusion_ip_allocation" {

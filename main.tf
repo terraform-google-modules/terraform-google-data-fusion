@@ -19,13 +19,14 @@ data "google_client_config" "current" {
 
 
 module "data_fusion_network" {
-  source          = "./modules/private_data_fusion_network"
-  project_id      = var.project
-  tenant_project  = module.instance.tenant_project
-  instance        = module.instance.instance.name
-  vpc_network     = var.network
-  dataproc_subnet = var.dataproc_subnet
-  region          = var.region
+  source                      = "./modules/private_data_fusion_network"
+  project_id                  = var.project
+  tenant_project              = module.instance.tenant_project
+  data_fusion_service_account = module.instance.service_account_email
+  instance                    = module.instance.instance.name
+  vpc_network                 = var.network
+  dataproc_subnet             = var.dataproc_subnet
+  region                      = var.region
 }
 
 module "instance" {
@@ -39,7 +40,7 @@ module "instance" {
   labels      = var.labels
   options     = var.options
   network_config = {
-    network       = module.data_fusion_network.data_fusion_vpc.name
+    network       = module.data_fusion_network.data_fusion_vpc.network_name
     ip_allocation = module.data_fusion_network.data_fusion_ip_allocation
   }
 }

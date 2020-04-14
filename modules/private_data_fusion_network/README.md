@@ -31,6 +31,7 @@ Functional examples are included in the
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
+| data\_fusion\_service\_account | The Google managed Data Fusion Service account | string | n/a | yes |
 | dataproc\_cidr | CIDR range for the subnetwork for Dataproc clusters controlled by private Data Fusion instance | string | `"10.2.0.0/16"` | no |
 | dataproc\_subnet | Name of the subnetwork for Dataproc clusters controlled by private Data Fusion instance | string | `"dataproc-subnet"` | no |
 | instance | Private Data Fusion instance ID | string | n/a | yes |
@@ -46,6 +47,7 @@ Functional examples are included in the
 | data\_fusion\_ip\_allocation | The IP CIDR range reserved for the private Data Fusion instance |
 | data\_fusion\_vpc | The VPC created for the private Data Fusion instance |
 | dataproc\_subnet | The subnetwork created for Dataproc clusters controlled by the private Data Fusion instance |
+| network\_name | The VPC created for the private Data Fusion instance |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

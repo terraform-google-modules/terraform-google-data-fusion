@@ -64,3 +64,7 @@ variable "options" {
   default     = {}
 }
 
+variable "data_fusion_service_account" {
+  description = "Google Managed Data Fusion Service Account Email"
+}
+
