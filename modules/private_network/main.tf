@@ -14,16 +14,6 @@
  * limitations under the License.
  */
 
-
-data "google_client_config" "current" {}
-
-resource "google_project_service" "project" {
-  project = var.project_id
-  service = "datafusion.googleapis.com"
-
-  disable_dependent_services = true
-}
-
 module "vpc" {
   source       = "terraform-google-modules/network/google"
   version      = "~> 2.2"
