@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
-terraform {
-  required_version = "~> 0.12.6"
-  required_providers {
-    google = "~> 3.0"
-  }
+module "data_fusion" {
+  source = "../../"
+
+  name    = "example-instance"
+  project = var.project_id
+  region  = "us-central1"
 }

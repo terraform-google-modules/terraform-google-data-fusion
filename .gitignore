@@ -43,3 +43,6 @@ crash.log
 **/*.tfvars
 
 credentials.json
+
+# Ignore CDAP Provider executable
+terraform-provider-cdap*
