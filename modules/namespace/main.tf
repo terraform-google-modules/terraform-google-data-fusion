@@ -19,6 +19,6 @@ resource "cdap_namespace" "namespace" {
 }
 
 resource "cdap_namespace_preferences" "preferences" {
-  namespace   = cdap_namespace.parent.name
+  namespace   = cdap_namespace.namespace.name
   preferences = var.preferences
 }
