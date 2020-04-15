@@ -14,9 +14,6 @@
  * limitations under the License.
  */
 
-data "google_client_config" "current" {
-}
-
 
 module "data_fusion_network" {
   source                      = "./modules/private_data_fusion_network"
