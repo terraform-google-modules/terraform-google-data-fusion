@@ -22,9 +22,9 @@ module "data_fusion_network" {
   source                      = "./modules/private_data_fusion_network"
   project_id                  = var.project
   tenant_project              = module.instance.tenant_project
-  data_fusion_service_account = module.instance.service_account_email
+  data_fusion_service_account = module.instance.service_account
   instance                    = module.instance.instance.name
-  vpc_network                 = var.network
+  network_name                = var.network
   dataproc_subnet             = var.dataproc_subnet
   region                      = var.region
 }
@@ -43,10 +43,5 @@ module "instance" {
     network       = module.data_fusion_network.data_fusion_vpc.network_name
     ip_allocation = module.data_fusion_network.data_fusion_ip_allocation
   }
-}
-
-provider "cdap" {
-  host  = "${module.instance.instance.service_endpoint}/api/"
-  token = data.google_client_config.current.access_token
 }
 

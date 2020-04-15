@@ -28,7 +28,7 @@ output "tenant_project" {
   description = "The Google managed tenant project ID in which the instance will run its jobs"
 }
 
-output "service_account_email" {
+output "service_account" {
   value       = google_data_fusion_instance.instance.service_account
   description = "The Google managed Data Fusion Service account"
 }
