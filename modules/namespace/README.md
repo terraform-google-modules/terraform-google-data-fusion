@@ -41,6 +41,7 @@ Functional examples are included in the
 | Name | Description |
 |------|-------------|
 | name | The created CDAP namespace |
+| preferences | The preferences set in the CDAP namespace |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
