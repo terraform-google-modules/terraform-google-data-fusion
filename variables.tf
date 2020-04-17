@@ -24,6 +24,17 @@ variable "project" {
   type        = string
 }
 
+variable "network" {
+  description = "Name for VPC to create or reuse to be configured for use with private Data Fusion instance."
+  type        = string
+}
+
+variable "dataproc_subnet" {
+  description = "Name for subnet to create and configure for Dataproc clusters controlled by private Data Fusion instance."
+  type        = string
+  default     = "dataproc-subnet"
+}
+
 variable "description" {
   description = "An optional description of the instance."
   type        = string
@@ -53,11 +64,7 @@ variable "options" {
   default     = {}
 }
 
-variable "network_config" {
-  description = "Network configuration options as defined in https://www.terraform.io/docs/providers/google/r/data_fusion_instance.html#network_config. Setting this implies a private instance."
-  type = object({
-    network       = string
-    ip_allocation = string
-  })
-  default = null
+variable "data_fusion_service_account" {
+  description = "Google Managed Data Fusion Service Account Email"
 }
+

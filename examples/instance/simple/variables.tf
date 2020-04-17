@@ -14,11 +14,7 @@
  * limitations under the License.
  */
 
-resource "cdap_namespace" "namespace" {
-  name = var.name
-}
-
-resource "cdap_namespace_preferences" "preferences" {
-  namespace   = cdap_namespace.namespace.name
-  preferences = var.preferences
+variable "project_id" {
+  description = "The ID of the project in which to provision resources."
+  type        = string
 }

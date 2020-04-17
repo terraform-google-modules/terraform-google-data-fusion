@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
-resource "cdap_namespace" "namespace" {
-  name = var.name
-}
+module "data_fusion" {
+  source = "../../"
 
-resource "cdap_namespace_preferences" "preferences" {
-  namespace   = cdap_namespace.namespace.name
-  preferences = var.preferences
+  name    = "example-instance"
+  project = var.project_id
+  region  = "us-central1"
 }
