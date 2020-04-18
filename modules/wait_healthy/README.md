@@ -22,10 +22,10 @@ data "google_client_config" "current" {}
 
 resource "google_data_fusion_instance" "instance" {
   provider = google-beta
-  name = "sample-instance"
-  project = "umairidris-cdf-test"
-  region = "us-central1"
-  type = "BASIC"
+  name     = "example-instance"
+  project  = "example-project"
+  region   = "us-central1"
+  type     = "BASIC"
 }
 
 module "wait_healthy" {
@@ -33,11 +33,11 @@ module "wait_healthy" {
   version = "~> 0.1"
 
   service_endpoint = google_data_fusion_instance.instance.service_endpoint
-  access_token = data.google_client_config.current.access_token
+  access_token     = data.google_client_config.current.access_token
 }
 
 provider "cdap" {
-  host = "${module.wait_healthy.service_endpoint}/api/"
+  host  = "${module.wait_healthy.service_endpoint}/api/"
   token = data.google_client_config.current.access_token
 }
 
