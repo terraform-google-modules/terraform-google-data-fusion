@@ -16,7 +16,7 @@
 
 
 module "data_fusion_network" {
-  source                      = "./modules/private_data_fusion_network"
+  source                      = "./modules/private_network"
   project_id                  = var.project
   tenant_project              = module.instance.tenant_project
   data_fusion_service_account = module.instance.service_account
