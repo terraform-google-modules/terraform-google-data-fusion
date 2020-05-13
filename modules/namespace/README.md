@@ -33,14 +33,15 @@ Functional examples are included in the
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| name | Name of the profile | string | n/a | yes |
-| preferences | Name of the profile | map(string) | n/a | yes |
+| name | Name of the namespace | string | n/a | yes |
+| preferences | Name of the preferences to set in this namespace | map(string) | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
 | name | The created CDAP namespace |
+| preferences | The preferences set in the CDAP namespace |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
