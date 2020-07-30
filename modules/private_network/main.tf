@@ -61,7 +61,7 @@ module "datafusion_firewall" {
       description = "Allow hosts in dataproc subnet to talk to each other on all ports"
       direction   = "INGRESS"
       action      = "allow"
-      ranges      = [module.vpc.subnets["${var.region}/{var.dataproc_subnet}"].ip_cidr_range]
+      ranges      = [module.vpc.subnets["${var.region}/${var.dataproc_subnet}"].ip_cidr_range]
 
       use_service_accounts = false
       rules = [{
