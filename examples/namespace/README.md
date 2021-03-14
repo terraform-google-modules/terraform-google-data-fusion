@@ -6,9 +6,13 @@ This example illustrates how to use the `cdap_namespace` module.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| name | The name of the cdap namespace to create. | string | n/a | yes |
-| preferences | Map of preferences to define the namespace. | map(string) | n/a | yes |
+|------|-------------|------|---------|:--------:|
+| name | The name of the cdap namespace to create. | `string` | n/a | yes |
+| preferences | Map of preferences to define the namespace. | `map(string)` | n/a | yes |
+
+## Outputs
+
+No output.
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

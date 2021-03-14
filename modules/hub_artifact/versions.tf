@@ -1,5 +1,5 @@
 /**
- * Copyright 2020 Google LLC
+ * Copyright 2021 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,12 +14,18 @@
  * limitations under the License.
  */
 
-variable "service_endpoint" {
-  description = "Endpoint of the the CDF instance to check for health."
-  type        = string
-}
+terraform {
+  required_version = ">= 0.13"
+  required_providers {
 
-variable "access_token" {
-  description = "Token for authenticating requests to the CDF instance."
-  type        = string
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 3.53"
+    }
+  }
+
+  provider_meta "google" {
+    module_name = "blueprints/terraform/terraform-google-data-fusion:hub_artifact/v1.0.0"
+  }
+
 }

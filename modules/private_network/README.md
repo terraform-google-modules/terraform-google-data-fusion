@@ -30,15 +30,15 @@ Functional examples are included in the
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| data\_fusion\_service\_account | The Google managed Data Fusion Service account | string | n/a | yes |
-| dataproc\_cidr | CIDR range for the subnetwork for Dataproc clusters controlled by private Data Fusion instance | string | `"10.2.0.0/16"` | no |
-| dataproc\_subnet | Name of the subnetwork for Dataproc clusters controlled by private Data Fusion instance | string | `"dataproc-subnet"` | no |
-| instance | Private Data Fusion instance ID | string | n/a | yes |
-| network\_name | VPC network to be created or configured with firewall rules and peering for private Data Fusion instance | string | n/a | yes |
-| project\_id | GCP Project ID to house resources for private Data Fusion setup | string | n/a | yes |
-| region | GCP region to create subnetwork for peering with private Data Fusion instance | string | `"us-central1"` | no |
-| tenant\_project | Private Data Fusion instance ID | string | n/a | yes |
+|------|-------------|------|---------|:--------:|
+| data\_fusion\_service\_account | The Google managed Data Fusion Service account | `string` | n/a | yes |
+| dataproc\_cidr | CIDR range for the subnetwork for Dataproc clusters controlled by private Data Fusion instance | `string` | `"10.2.0.0/16"` | no |
+| dataproc\_subnet | Name of the subnetwork for Dataproc clusters controlled by private Data Fusion instance | `string` | `"dataproc-subnet"` | no |
+| instance | Private Data Fusion instance ID | `string` | n/a | yes |
+| network\_name | VPC network to be created or configured with firewall rules and peering for private Data Fusion instance | `string` | n/a | yes |
+| project\_id | GCP Project ID to house resources for private Data Fusion setup | `string` | n/a | yes |
+| region | GCP region to create subnetwork for peering with private Data Fusion instance | `string` | `"us-central1"` | no |
+| tenant\_project | Private Data Fusion instance ID | `string` | n/a | yes |
 
 ## Outputs
 
