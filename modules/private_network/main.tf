@@ -32,7 +32,7 @@ module "vpc" {
 }
 
 module "peering" {
-  source                     = "terraform-google-modules/network/google//modules/network-peering"
+  source                     = "../network_peering"
   prefix                     = "data-fusion-peering"
   local_network              = module.vpc.network_self_link
   peer_network               = "projects/${var.tenant_project}/global/networks/${var.region}-${var.instance}"
