@@ -32,9 +32,9 @@ Functional examples are included in the
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| name | Name of the namespace | string | n/a | yes |
-| preferences | Name of the preferences to set in this namespace | map(string) | n/a | yes |
+|------|-------------|------|---------|:--------:|
+| name | Name of the namespace | `string` | n/a | yes |
+| preferences | Name of the preferences to set in this namespace | `map(string)` | n/a | yes |
 
 ## Outputs
 

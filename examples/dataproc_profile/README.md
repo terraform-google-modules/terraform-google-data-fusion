@@ -6,8 +6,12 @@ This example illustrates how to use the `dataproc_provisioner` module.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| profile\_name | The name of the cdap profile to create. | string | `"verbose_dataproc"` | no |
+|------|-------------|------|---------|:--------:|
+| profile\_name | The name of the cdap profile to create. | `string` | `"verbose_dataproc"` | no |
+
+## Outputs
+
+No output.
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
