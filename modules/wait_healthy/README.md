@@ -53,15 +53,15 @@ Functional examples are included in the
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| access\_token | Token for authenticating requests to the CDF instance. | string | n/a | yes |
-| service\_endpoint | Endpoint of the the CDF instance to check for health. | string | n/a | yes |
+|------|-------------|------|---------|:--------:|
+| access\_token | Token for authenticating requests to the CDF instance. | `string` | n/a | yes |
+| service\_endpoint | Endpoint of the the CDF instance to check for health. | `string` | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| service\_endpoint | The input service_endpoint. Useful for creating a dependency on this module. |
+| service\_endpoint | The input service\_endpoint. Useful for creating a dependency on this module. |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

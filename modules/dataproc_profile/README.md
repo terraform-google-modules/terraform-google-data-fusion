@@ -38,23 +38,23 @@ Functional examples are included in the
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| account\_key | Service account key to use for authentication | string | `""` | no |
-| encryption\_key\_name | Customer supplied encryption key used by the Dataproc cluster | string | `""` | no |
-| extra\_properties | Extra properties for the CDAP Profile payload. This can include Dataproc Cluster Properties https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/cluster-properties | map(string) | `<map>` | no |
-| gcs\_bucket | Dataproc Staging Bucket for job staging job artifacts and driver logs. | string | `""` | no |
-| image\_version | Dataproc image version to use for the Dataproc cluster | string | `""` | no |
-| label | CDAP Label of the profile | string | n/a | yes |
-| master | Config of the Dataproc cluster master | object | `<map>` | no |
-| name | Name of the profile | string | n/a | yes |
-| namespace | Namespace to deploy profile in | string | `"default"` | no |
-| network | Network to use for the Dataproc cluster | string | `"default"` | no |
-| network\_host\_project\_id | Project ID of the network | string | `""` | no |
-| project | ID of the project hosting the Dataproc cluster | string | `"auto-detect"` | no |
-| region | Region of the Dataproc cluster | string | `"auto-detect"` | no |
-| service\_account | Service account to run the Dataproc cluster as | string | `""` | no |
-| subnet | Subnet to use for the Dataproc cluster | string | `""` | no |
-| worker | Config of the Dataproc cluster worker | object | `<map>` | no |
+|------|-------------|------|---------|:--------:|
+| account\_key | Service account key to use for authentication | `string` | `""` | no |
+| encryption\_key\_name | Customer supplied encryption key used by the Dataproc cluster | `string` | `""` | no |
+| extra\_properties | Extra properties for the CDAP Profile payload. This can include Dataproc Cluster Properties https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/cluster-properties | `map(string)` | `{}` | no |
+| gcs\_bucket | Dataproc Staging Bucket for job staging job artifacts and driver logs. | `string` | `""` | no |
+| image\_version | Dataproc image version to use for the Dataproc cluster | `string` | `""` | no |
+| label | CDAP Label of the profile | `string` | n/a | yes |
+| master | Config of the Dataproc cluster master | <pre>object({<br>    num_nodes = number<br>    num_cpus  = number<br>    memory_gb = number<br>    disk_gb   = number<br>  })</pre> | <pre>{<br>  "disk_gb": 1000,<br>  "memory_gb": 52,<br>  "num_cpus": 8,<br>  "num_nodes": 1<br>}</pre> | no |
+| name | Name of the profile | `string` | n/a | yes |
+| namespace | Namespace to deploy profile in | `string` | `"default"` | no |
+| network | Network to use for the Dataproc cluster | `string` | `"default"` | no |
+| network\_host\_project\_id | Project ID of the network | `string` | `""` | no |
+| project | ID of the project hosting the Dataproc cluster | `string` | `"auto-detect"` | no |
+| region | Region of the Dataproc cluster | `string` | `"auto-detect"` | no |
+| service\_account | Service account to run the Dataproc cluster as | `string` | `""` | no |
+| subnet | Subnet to use for the Dataproc cluster | `string` | `""` | no |
+| worker | Config of the Dataproc cluster worker | <pre>object({<br>    num_nodes = number<br>    num_cpus  = number<br>    memory_gb = number<br>    disk_gb   = number<br>  })</pre> | <pre>{<br>  "disk_gb": 1000,<br>  "memory_gb": 52,<br>  "num_cpus": 8,<br>  "num_nodes": 5<br>}</pre> | no |
 
 ## Outputs
 

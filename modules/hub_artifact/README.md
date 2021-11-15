@@ -33,13 +33,13 @@ Functional examples are included in the
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| artifact\_version | Version of the artifact. | string | n/a | yes |
-| bucket | Name of the GCS bucket for the hub. | string | n/a | yes |
-| name | Name of the artifact within the package. | string | n/a | yes |
-| namespace | Namespace to create the artifact in. | string | `"null"` | no |
-| package | Name of the package within the hub bucket that contains the artifact. | string | n/a | yes |
-| package\_version | Version of the package. If not set, the artifact version is used. | string | `"null"` | no |
+|------|-------------|------|---------|:--------:|
+| artifact\_version | Version of the artifact. | `string` | n/a | yes |
+| bucket | Name of the GCS bucket for the hub. | `string` | n/a | yes |
+| name | Name of the artifact within the package. | `string` | n/a | yes |
+| namespace | Namespace to create the artifact in. | `string` | `null` | no |
+| package | Name of the package within the hub bucket that contains the artifact. | `string` | n/a | yes |
+| package\_version | Version of the package. If not set, the artifact version is used. | `string` | `null` | no |
 
 ## Outputs
 
