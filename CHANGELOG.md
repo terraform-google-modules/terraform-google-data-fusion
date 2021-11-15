@@ -7,6 +7,17 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0](https://www.github.com/terraform-google-modules/terraform-google-data-fusion/compare/v0.1.1...v1.0.0) (2021-11-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* add Terraform 0.13 constraint and module attribution (#43)
+
+### Features
+
+* add Terraform 0.13 constraint and module attribution ([#43](https://www.github.com/terraform-google-modules/terraform-google-data-fusion/issues/43)) ([5d25e52](https://www.github.com/terraform-google-modules/terraform-google-data-fusion/commit/5d25e5278eef4db9a5e4430218d133042d56015f))
+
 ### [0.1.1](https://www.github.com/terraform-google-modules/terraform-google-data-fusion/compare/v0.1.0...v0.1.1) (2020-07-30)
 
 
