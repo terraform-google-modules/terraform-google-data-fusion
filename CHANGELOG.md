@@ -7,6 +7,13 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0](https://www.github.com/terraform-google-modules/terraform-google-data-fusion/compare/v1.0.0...v1.1.0) (2021-12-20)
+
+
+### Features
+
+* update TPG version constraints to allow 4.0 ([#50](https://www.github.com/terraform-google-modules/terraform-google-data-fusion/issues/50)) ([15bbce5](https://www.github.com/terraform-google-modules/terraform-google-data-fusion/commit/15bbce5c0f22a9d6383945af9f43dbe23757c3ff))
+
 ## [1.0.0](https://www.github.com/terraform-google-modules/terraform-google-data-fusion/compare/v0.1.1...v1.0.0) (2021-11-15)
 
 
