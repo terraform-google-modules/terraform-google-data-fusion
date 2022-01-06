@@ -25,7 +25,7 @@ terraform {
   }
 
   provider_meta "google" {
-    module_name = "blueprints/terraform/terraform-google-data-fusion:dataproc_profile/v1.0.0"
+    module_name = "blueprints/terraform/terraform-google-data-fusion:dataproc_profile/v1.1.0"
   }
 
 }
