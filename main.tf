@@ -35,6 +35,7 @@ module "instance" {
   region      = var.region
   type        = var.type
   labels      = var.labels
+  datafusion_version   = var.datafusion_version
   options     = var.options
   network_config = {
     network       = module.data_fusion_network.data_fusion_vpc.network_name

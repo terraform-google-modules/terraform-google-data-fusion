@@ -24,6 +24,12 @@ variable "project" {
   type        = string
 }
 
+variable "datafusion_version" {
+  description = "Data Fusion Version to deploy."
+  type        = string
+  default     = null
+}
+
 variable "network" {
   description = "Name for VPC to create or reuse to be configured for use with private Data Fusion instance."
   type        = string
