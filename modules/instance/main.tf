@@ -24,6 +24,7 @@ resource "google_data_fusion_instance" "instance" {
   enable_stackdriver_logging    = true
   enable_stackdriver_monitoring = true
   labels                        = var.labels
+  version                       = var.datafusion_version
   options                       = var.options
   private_instance              = var.network_config != null
 

@@ -24,6 +24,12 @@ variable "project" {
   type        = string
 }
 
+variable "datafusion_version" {
+  description = "Data Fusion Version to deploy."
+  type        = string
+  default     = null
+}
+
 variable "description" {
   description = "An optional description of the instance."
   type        = string
