@@ -17,7 +17,9 @@
 module "data_fusion" {
   source = "../../"
 
-  name    = "example-instance"
-  project = var.project_id
-  region  = "us-central1"
+  name                        = "example-instance"
+  project                     = var.project_id
+  region                      = "us-central1"
+  network                     = "default"
+  data_fusion_service_account = var.data_fusion_service_account
 }

@@ -22,6 +22,10 @@ terraform {
       source  = "hashicorp/google"
       version = ">= 3.53, < 5.0"
     }
+    cdap = {
+      source  = "GoogleCloudPlatform/cdap"
+      version = "~> 0.9.0"
+    }
   }
 
   provider_meta "google" {

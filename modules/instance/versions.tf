@@ -15,5 +15,13 @@
  */
 
 terraform {
-  required_version = "~> 0.12.6"
+  required_version = ">= 0.13"
+
+  provider_meta "google" {
+    module_name = "blueprints/terraform/terraform-google-data-fusion:instance/v1.1.0"
+  }
+
+  provider_meta "google-beta" {
+    module_name = "blueprints/terraform/terraform-google-data-fusion:instance/v1.1.0"
+  }
 }

@@ -7,11 +7,14 @@ This example illustrates how to use the `data-fusion` module.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| data\_fusion\_service\_account | Google Managed Data Fusion Service Account Email | `any` | n/a | yes |
 | project\_id | The ID of the project in which to provision resources. | `string` | n/a | yes |
 
 ## Outputs
 
-No output.
+| Name | Description |
+|------|-------------|
+| instance\_id | The created Google Data Fusion instance ID |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
