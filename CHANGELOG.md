@@ -7,6 +7,18 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0](https://github.com/terraform-google-modules/terraform-google-data-fusion/compare/v1.1.0...v2.0.0) (2022-07-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* Update for TF and CI, add instance test  (#59)
+
+### Features
+
+* support data fusion version ([#56](https://github.com/terraform-google-modules/terraform-google-data-fusion/issues/56)) ([160511b](https://github.com/terraform-google-modules/terraform-google-data-fusion/commit/160511b13c826bfa7bccaa18ccf4930d9039eb74))
+* Update for TF and CI, add instance test  ([#59](https://github.com/terraform-google-modules/terraform-google-data-fusion/issues/59)) ([77fa12c](https://github.com/terraform-google-modules/terraform-google-data-fusion/commit/77fa12c5da3fa349089ba0937f1fa78ac9aaa9e3))
+
 ## [1.1.0](https://www.github.com/terraform-google-modules/terraform-google-data-fusion/compare/v1.0.0...v1.1.0) (2021-12-20)
 
 
