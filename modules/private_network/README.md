@@ -1,6 +1,6 @@
 # Data Fusion Private Network Setup
 
-This module can be used to deploy the networking pre-reqs for a 
+This module can be used to deploy the networking pre-reqs for a
 [Private IP Data Fusion Instance](https://cloud.google.com/data-fusion/docs/how-to/create-private-ip).
 Namely:
 - VPC Network

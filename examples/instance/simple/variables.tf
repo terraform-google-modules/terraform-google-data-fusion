@@ -18,3 +18,7 @@ variable "project_id" {
   description = "The ID of the project in which to provision resources."
   type        = string
 }
+
+variable "data_fusion_service_account" {
+  description = "Google Managed Data Fusion Service Account Email"
+}

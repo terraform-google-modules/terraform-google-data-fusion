@@ -12,10 +12,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-control "gcp" do
-  title "GCP Resources"
+control "gcloud" do
+  title "Google Data Fusion instance"
 
-  describe google_storage_bucket(name: attribute("bucket_name")) do
-    it { should exist }
+  describe command("gcloud beta data-fusion instances describe #{attribute("instance_id")} --format=json") do
+    its(:exit_status) { should eq 0 }
+    its(:stderr) { should eq '' }
+
+    let!(:data) do
+      if subject.exit_status == 0
+        JSON.parse(subject.stdout)
+      else
+        {}
+      end
+    end
+
+    describe "instance" do
+      it "is running" do
+        expect(data['state']).to eq('RUNNING')
+      end
+    end
   end
 end
