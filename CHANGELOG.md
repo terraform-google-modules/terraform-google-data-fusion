@@ -12,7 +12,7 @@ and this project adheres to
 
 ### ⚠ BREAKING CHANGES
 
-* Update for TF and CI, add instance test  (#59)
+* Increased minimum Google Provider version to 4.12 (#59)
 
 ### Features
 
