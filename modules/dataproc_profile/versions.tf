@@ -29,7 +29,7 @@ terraform {
   }
 
   provider_meta "google" {
-    module_name = "blueprints/terraform/terraform-google-data-fusion:dataproc_profile/v2.0.0"
+    module_name = "blueprints/terraform/terraform-google-data-fusion:dataproc_profile/v3.0.0"
   }
 
 }
