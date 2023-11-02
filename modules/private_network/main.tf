@@ -49,7 +49,7 @@ resource "google_compute_global_address" "data_fusion_private_ip_alloc" {
 }
 
 module "datafusion_firewall" {
-  source                  = "terraform-google-modules/network/google//modules/fabric-net-firewall"
+  source                  = "github.com/terraform-google-modules/terraform-google-network//modules/fabric-net-firewall?ref=3d51263841e282657007076936a13a2d9c8d698f"
   project_id              = var.project_id
   network                 = module.vpc.network_name
   internal_ranges_enabled = true
