@@ -18,8 +18,3 @@ variable "name" {
   description = "The name of the cdap namespace to create."
   type        = string
 }
-
-variable "preferences" {
-  description = "Map of preferences to define the namespace."
-  type        = map(string)
-}

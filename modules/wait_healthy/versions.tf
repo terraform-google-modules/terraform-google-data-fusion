@@ -26,6 +26,11 @@ terraform {
       source  = "hashicorp/google-beta"
       version = ">= 3.53, < 6"
     }
+
+    null = {
+      source  = "hashicorp/null"
+      version = ">= 3.0, < 4"
+    }
   }
 
   provider_meta "google" {

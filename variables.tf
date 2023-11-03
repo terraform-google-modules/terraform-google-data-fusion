@@ -69,8 +69,3 @@ variable "options" {
   type        = map(string)
   default     = {}
 }
-
-variable "data_fusion_service_account" {
-  description = "Google Managed Data Fusion Service Account Email"
-}
-
