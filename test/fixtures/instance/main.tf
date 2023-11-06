@@ -15,8 +15,6 @@
  */
 
 module "example" {
-  source = "../../../examples/instance"
-
-  project_id                  = var.project_id
-  data_fusion_service_account = var.sa_key
+  source     = "../../../examples/instance"
+  project_id = var.project_id
 }
