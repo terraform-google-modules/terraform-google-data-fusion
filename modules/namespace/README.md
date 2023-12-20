@@ -16,7 +16,7 @@ provider "cdap" {
 
 module "staging" {
   source  = "terraform-google-modules/data-fusion/google//modules/namespace"
-  version = "~> 0.1"
+  version = "~> 3.0"
 
   name = var.name
   preferences = {

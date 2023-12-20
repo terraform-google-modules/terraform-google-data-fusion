@@ -30,7 +30,7 @@ resource "google_data_fusion_instance" "instance" {
 
 module "wait_healthy" {
   source  = "terraform-google-modules/data-fusion/google//modules/wait_healthy"
-  version = "~> 0.1"
+  version = "~> 3.0"
 
   service_endpoint = google_data_fusion_instance.instance.service_endpoint
   access_token     = data.google_client_config.current.access_token
