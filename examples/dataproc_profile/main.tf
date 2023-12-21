@@ -24,7 +24,7 @@ provider "cdap" {
 
 module "verbose_dataproc" {
   source  = "terraform-google-modules/data-fusion/google//modules/dataproc_profile"
-  version = "~> 2.0"
+  version = "~> 3.0"
 
   name  = var.profile_name
   label = var.profile_name
