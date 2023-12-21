@@ -25,7 +25,7 @@ terraform {
   }
 
   provider_meta "google" {
-    module_name = "blueprints/terraform/terraform-google-data-fusion/v2.0.0"
+    module_name = "blueprints/terraform/terraform-google-data-fusion/v3.0.0"
   }
 
 }

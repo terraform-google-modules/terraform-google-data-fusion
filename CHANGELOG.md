@@ -7,6 +7,23 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.0](https://github.com/terraform-google-modules/terraform-google-data-fusion/compare/v2.0.0...v3.0.0) (2023-12-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** Update Terraform terraform-google-modules/network/google to v8 ([#73](https://github.com/terraform-google-modules/terraform-google-data-fusion/issues/73))
+* upgraded versions.tf to include minor bumps from tpg v5 ([#75](https://github.com/terraform-google-modules/terraform-google-data-fusion/issues/75))
+* **deps:** update terraform cdap to ~> 0.10 ([#66](https://github.com/terraform-google-modules/terraform-google-data-fusion/issues/66))
+
+### Bug Fixes
+
+* **deps:** update terraform cdap to ~&gt; 0.10 ([#66](https://github.com/terraform-google-modules/terraform-google-data-fusion/issues/66)) ([7f86542](https://github.com/terraform-google-modules/terraform-google-data-fusion/commit/7f86542ca78ceabe2b305061019ef33d1bb0921f))
+* **deps:** update terraform cdap to ~&gt; 0.9 ([#61](https://github.com/terraform-google-modules/terraform-google-data-fusion/issues/61)) ([d4f44ec](https://github.com/terraform-google-modules/terraform-google-data-fusion/commit/d4f44ecbcb18f095320c4209992934e261feb4fb))
+* **deps:** Update Terraform terraform-google-modules/network/google to v8 ([#73](https://github.com/terraform-google-modules/terraform-google-data-fusion/issues/73)) ([2a0c847](https://github.com/terraform-google-modules/terraform-google-data-fusion/commit/2a0c84746e5275114006104fba07deb4474961c7))
+* **deps:** update tf modules ([#64](https://github.com/terraform-google-modules/terraform-google-data-fusion/issues/64)) ([2f72d38](https://github.com/terraform-google-modules/terraform-google-data-fusion/commit/2f72d38f8e41f237fdf642fac4b23312133d43b2))
+* upgraded versions.tf to include minor bumps from tpg v5 ([#75](https://github.com/terraform-google-modules/terraform-google-data-fusion/issues/75)) ([89e9d20](https://github.com/terraform-google-modules/terraform-google-data-fusion/commit/89e9d203fa15d59e10de473a917427c5baf29a31))
+
 ## [2.0.0](https://github.com/terraform-google-modules/terraform-google-data-fusion/compare/v1.1.0...v2.0.0) (2022-07-29)
 
 
