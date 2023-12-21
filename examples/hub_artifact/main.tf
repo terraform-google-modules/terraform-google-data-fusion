@@ -23,7 +23,8 @@ provider "cdap" {
 }
 
 module "connectors_streaming_1_0_0" {
-  source = "../../modules/hub_artifact"
+  source  = "terraform-google-modules/data-fusion/google//modules/hub_artifact"
+  version = "~> 3.0"
 
   bucket           = "aeba5c94-db31-451a-85ea-27047cbe133b" # Healthcare hub.
   package          = "healthcare-cloud-api-connectors"
