@@ -7,6 +7,17 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.0.0](https://github.com/terraform-google-modules/terraform-google-data-fusion/compare/v3.0.0...v4.0.0) (2024-03-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** Update Terraform terraform-google-modules/network/google to v9 ([#79](https://github.com/terraform-google-modules/terraform-google-data-fusion/issues/79))
+
+### Bug Fixes
+
+* **deps:** Update Terraform terraform-google-modules/network/google to v9 ([#79](https://github.com/terraform-google-modules/terraform-google-data-fusion/issues/79)) ([752fd6c](https://github.com/terraform-google-modules/terraform-google-data-fusion/commit/752fd6c5018c0f9652e83dd23ae8caee6921309f))
+
 ## [3.0.0](https://github.com/terraform-google-modules/terraform-google-data-fusion/compare/v2.0.0...v3.0.0) (2023-12-20)
 
 
