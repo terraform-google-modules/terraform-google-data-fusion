@@ -19,7 +19,7 @@ terraform {
   required_providers {
     cdap = {
       source  = "GoogleCloudPlatform/cdap"
-      version = "~> 0.10"
+      version = "~> 0.11"
     }
     google = {
       source = "hashicorp/google"
