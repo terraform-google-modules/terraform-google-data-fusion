@@ -16,7 +16,7 @@
 
 module "data_fusion" {
   source  = "terraform-google-modules/data-fusion/google"
-  version = "~> 3.0"
+  version = "~> 4.0"
 
   name    = "example-instance"
   project = var.project_id
