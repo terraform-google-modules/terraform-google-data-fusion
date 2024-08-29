@@ -9,7 +9,7 @@ Basic usage of this module is as follows:
 ```hcl
 module "data_fusion" {
   source  = "terraform-google-modules/data-fusion/google"
-  version = "~> 4.0"
+  version = "~> 4.1"
 
   name    = "example-instance"
   project = "example-project"
