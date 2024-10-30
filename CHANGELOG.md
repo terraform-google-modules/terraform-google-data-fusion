@@ -7,6 +7,13 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.1.0](https://github.com/terraform-google-modules/terraform-google-data-fusion/compare/v4.0.0...v4.1.0) (2024-10-30)
+
+
+### Features
+
+* **deps:** Update Terraform Google Provider to v6 (major) ([#92](https://github.com/terraform-google-modules/terraform-google-data-fusion/issues/92)) ([8397cdc](https://github.com/terraform-google-modules/terraform-google-data-fusion/commit/8397cdc76ce34eb1d0bec01de689ac7368def2bd))
+
 ## [4.0.0](https://github.com/terraform-google-modules/terraform-google-data-fusion/compare/v3.0.0...v4.0.0) (2024-04-12)
 
 

@@ -19,7 +19,7 @@ provider "cdap" {
 
 module "custom_dataproc" {
   source  = "terraform-google-modules/data-fusion/google//modules/dataproc_profile"
-  version = "~> 4.0"
+  version = "~> 4.1"
 
   name   = "custom-dataproc"
   label  = "Custom Dataproc Profile"
